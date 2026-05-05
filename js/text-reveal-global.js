@@ -1,0 +1,111 @@
+/**
+ * Textos — entrada no hero/header + revelação no scroll (GSAP ScrollTrigger.batch)
+ * Respeita [data-no-text-anim] nas seções que já têm animação própria.
+ */
+(function () {
+  "use strict";
+
+  var prefersReduced =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (prefersReduced || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function skipRegion(el) {
+    return el.closest("[data-no-text-anim]") || el.closest(".hero") || el.closest("[aria-hidden=\"true\"]");
+  }
+
+  function pushUnique(arr, el) {
+    if (!el || arr.indexOf(el) !== -1) return;
+    arr.push(el);
+  }
+
+  function collectScrollTargets() {
+    var arr = [];
+    var selectors =
+      "main h1, main h2, main h3, main h4, main p, main figcaption, main .section-editorial__index, main .netflix-card__name, main .cta-block a.btn";
+
+    document.querySelectorAll(selectors).forEach(function (el) {
+      if (skipRegion(el)) return;
+      pushUnique(arr, el);
+    });
+
+    document.querySelectorAll("footer .footer-col, footer .footer-premium__cta, footer .footer-copy").forEach(function (el) {
+      if (el.closest("[aria-hidden=\"true\"]")) return;
+      pushUnique(arr, el);
+    });
+
+    return arr;
+  }
+
+  /* — Hero + header na entrada — */
+  gsap.set(
+    ".hero-logo-wrap, .hero-tag, .hero-title-line, .hero-sub, .hero-actions .btn",
+    { autoAlpha: 0, y: 30 }
+  );
+  gsap.set(".hero-scroll", { autoAlpha: 0 });
+
+  var heroTl = gsap.timeline({ defaults: { ease: "power3.out" }, delay: 0.06 });
+  heroTl.to(".hero-logo-wrap", { autoAlpha: 1, y: 0, duration: 0.72 }, 0);
+  heroTl.to(".hero-tag", { autoAlpha: 1, y: 0, duration: 0.62 }, 0.06);
+  heroTl.to(".hero-title-line", { autoAlpha: 1, y: 0, duration: 0.68, stagger: 0.11 }, 0.1);
+  heroTl.to(".hero-sub", { autoAlpha: 1, y: 0, duration: 0.62 }, 0.18);
+  heroTl.to(".hero-actions .btn", { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.07 }, 0.22);
+  heroTl.to(".hero-scroll", { autoAlpha: 1, duration: 0.55 }, 0.32);
+
+  gsap.set(".site-header .logo-img, .site-header .logo-text-nav__name, .site-header .logo-text-nav__sub", {
+    autoAlpha: 0,
+    y: -8,
+  });
+  gsap.to(".site-header .logo-img, .site-header .logo-text-nav__name, .site-header .logo-text-nav__sub", {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.5,
+    stagger: 0.06,
+    ease: "power2.out",
+    delay: 0.02,
+  });
+
+  if (window.matchMedia("(min-width: 769px)").matches) {
+    gsap.set(".site-header .site-nav a", { autoAlpha: 0, y: -8 });
+    gsap.to(".site-header .site-nav a", {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.45,
+      stagger: 0.04,
+      ease: "power2.out",
+      delay: 0.12,
+    });
+  } else {
+    gsap.set(".nav-toggle", { autoAlpha: 0, scale: 0.92 });
+    gsap.to(".nav-toggle", { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.4)", delay: 0.1 });
+  }
+
+  /* — Demais textos no scroll — */
+  var scrollTargets = collectScrollTargets();
+  if (scrollTargets.length) {
+    gsap.set(scrollTargets, { autoAlpha: 0, y: 26 });
+
+    ScrollTrigger.batch(scrollTargets, {
+      interval: 0.12,
+      batchMax: 8,
+      onEnter: function (batch) {
+        gsap.to(batch, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.58,
+          stagger: 0.055,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      },
+      start: "top 89%",
+      once: true,
+    });
+  }
+
+  ScrollTrigger.refresh();
+})();

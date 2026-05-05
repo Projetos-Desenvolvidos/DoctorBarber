@@ -1,0 +1,214 @@
+/* História da marca + fundador — editorial premium (cabeçalho no padrão equipe) */
+.brand-story {
+  position: relative;
+  isolation: isolate;
+  max-width: 100%;
+  background: var(--bg-elevated);
+  color: var(--text);
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.brand-story__noise {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='bn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23bn)'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.brand-story__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 9vw, 6.5rem) clamp(1.25rem, 4vw, 2.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.25rem, 5.5vw, 3.75rem);
+}
+
+.brand-story__rail {
+  position: absolute;
+  left: clamp(0.75rem, 3vw, 2rem);
+  top: clamp(3rem, 8vw, 5rem);
+  bottom: clamp(3rem, 8vw, 5rem);
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(201, 162, 39, 0.45) 18%,
+    rgba(255, 255, 255, 0.08) 55%,
+    transparent 100%
+  );
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+  pointer-events: none;
+}
+
+/* Palco: texto + foto */
+.brand-story__stage {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 2.75rem);
+}
+
+.brand-story__visual {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.brand-story__figure {
+  margin: 0;
+  position: relative;
+}
+
+.brand-story__frame {
+  position: relative;
+  border-radius: clamp(6px, 1.2vw, 14px);
+  overflow: hidden;
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: #111;
+}
+
+.brand-story__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, transparent 40%, rgba(0, 0, 0, 0.35) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.brand-story__frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.brand-story__caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.45);
+}
+
+.brand-story__caption strong {
+  font-family: var(--font-display, "Archivo Black", sans-serif);
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  color: #c9a227;
+  font-weight: 400;
+}
+
+.brand-story__copy {
+  position: relative;
+  padding-left: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.brand-story__rule {
+  height: 1px;
+  width: 100%;
+  max-width: 180px;
+  margin: 0 0 1.5rem;
+  background: linear-gradient(90deg, #c9a227, rgba(255, 255, 255, 0.12));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+.brand-story__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 42ch;
+}
+
+.brand-story__body p {
+  margin: 0;
+  font-size: clamp(0.98rem, 1.2vw, 1.06rem);
+  line-height: 1.62;
+  color: var(--text-muted);
+}
+
+.brand-story__body strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.brand-story__pullquote {
+  margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+  padding: clamp(1.1rem, 2.5vw, 1.45rem) 0 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-family: var(--font-display, "Archivo Black", sans-serif);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--text);
+  max-width: 22ch;
+}
+
+.brand-story__pullquote span {
+  color: #c9a227;
+}
+
+@media (max-width: 980px) {
+  .brand-story__stage .brand-story__visual {
+    order: -1;
+  }
+}
+
+@media (min-width: 981px) {
+  .brand-story__stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.88fr);
+    align-items: center;
+    column-gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .brand-story__copy {
+    grid-column: 1;
+    grid-row: 1;
+    padding-right: clamp(0.5rem, 2vw, 2rem);
+    max-width: 560px;
+    z-index: 2;
+  }
+
+  .brand-story__visual {
+    grid-column: 2;
+    grid-row: 1;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    justify-self: end;
+    margin-left: clamp(-3.5rem, -5vw, -1.25rem);
+    margin-top: clamp(0.25rem, 1.5vw, 1rem);
+  }
+
+  .brand-story__figure {
+    transform: translateX(clamp(0px, 2vw, 24px));
+  }
+}
+
+@media (min-width: 1200px) {
+  .brand-story__visual {
+    margin-left: clamp(-4.5rem, -6vw, -2rem);
+  }
+}

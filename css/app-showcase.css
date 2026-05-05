@@ -1,0 +1,344 @@
+/* Seção premium — download do app (GSAP ScrollTrigger) */
+.app-showcase {
+  position: relative;
+  min-height: 140vh;
+  max-width: 100%;
+  background:
+    radial-gradient(ellipse 90% 70% at 85% 20%, rgba(0, 0, 0, 0.06), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 10% 80%, rgba(0, 0, 0, 0.04), transparent 50%),
+    linear-gradient(165deg, #d8d8d8 0%, #e8e8e8 40%, #e0e0e0 100%);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.app-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -12deg,
+    transparent,
+    transparent 100px,
+    rgba(0, 0, 0, 0.02) 100px,
+    rgba(0, 0, 0, 0.02) 101px
+  );
+  pointer-events: none;
+}
+
+.app-showcase__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 2.5rem);
+  min-height: min(100vh, 900px);
+  display: flex;
+  align-items: center;
+}
+
+.app-showcase__grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  width: 100%;
+}
+
+/* Desktop: texto à esquerda, celular à direita (HTML mantém celular primeiro para mobile) */
+@media (min-width: 769px) {
+  .app-showcase__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .app-showcase__copy {
+    order: 1;
+  }
+
+  .app-showcase__visual {
+    order: 2;
+  }
+}
+
+.app-showcase__head.section-editorial {
+  margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.app-showcase__extra {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #5a5a5a;
+  margin: 0 0 2rem;
+  max-width: 40ch;
+  padding-left: 1rem;
+  border-left: 3px solid #0a0a0a;
+}
+
+.app-showcase__stores {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.app-showcase__btn {
+  --badge-h: 56px;
+  --badge-w: 188px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: var(--badge-w);
+  height: var(--badge-h);
+  min-height: var(--badge-h);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  text-decoration: none;
+  box-shadow: none;
+  transition: transform 0.28s ease;
+  position: relative;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.app-showcase__badge-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.28s ease;
+}
+
+.app-showcase__btn:hover {
+  transform: scale(1.05);
+}
+
+.app-showcase__btn:hover .app-showcase__badge-img {
+  transform: scale(1.015);
+}
+
+.app-showcase__btn:active .app-showcase__badge-img {
+  transform: scale(0.99);
+}
+
+.app-showcase__btn-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-showcase__btn-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.app-showcase__btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  line-height: 1.15;
+}
+
+.app-showcase__btn-small {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.app-showcase__btn-strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Coluna do celular */
+.app-showcase__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 420px;
+}
+
+.app-showcase__phone-stack {
+  position: relative;
+  width: min(100%, 380px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-showcase__phone-outer {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  transform-origin: 50% 60%;
+  will-change: transform, opacity, filter;
+}
+
+.app-showcase__phone-float {
+  position: relative;
+  width: 100%;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* Um único mockup + 3D no scroll = “virada” contínua (sem troca de PNG) */
+.app-showcase__phone-tilt {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-origin: 50% 65%;
+  will-change: transform;
+}
+
+.app-showcase__glow {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  width: 85%;
+  height: 45%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.app-showcase__shine {
+  position: absolute;
+  inset: 8% 12%;
+  border-radius: 12%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 4;
+  mix-blend-mode: soft-light;
+}
+
+.app-showcase__shine-bar {
+  position: absolute;
+  top: -20%;
+  left: -30%;
+  width: 45%;
+  height: 140%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 45%,
+    rgba(255, 255, 255, 0.2) 55%,
+    transparent 100%
+  );
+  transform: skewX(-12deg) translateX(-120%);
+  animation: appShineSweep 4.5s ease-in-out infinite;
+}
+
+@keyframes appShineSweep {
+  0%,
+  55% {
+    transform: skewX(-12deg) translateX(-120%);
+  }
+  75% {
+    transform: skewX(-12deg) translateX(280%);
+  }
+  100% {
+    transform: skewX(-12deg) translateX(280%);
+  }
+}
+
+.app-showcase__phones {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.app-showcase__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0.1px);
+}
+
+/* Mobile: celular primeiro, texto em seguida (fluxo = ordem do HTML) */
+@media (max-width: 768px) {
+  .app-showcase {
+    min-height: auto;
+  }
+
+  .app-showcase__inner {
+    min-height: auto;
+    padding-top: 2.75rem;
+    padding-bottom: 3rem;
+  }
+
+  .app-showcase__grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .app-showcase__copy {
+    text-align: center;
+  }
+
+  .app-showcase__copy .section-editorial {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 36rem;
+  }
+
+  .app-showcase__extra {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .app-showcase__extra {
+    padding-left: 0.85rem;
+  }
+
+  .app-showcase__stores {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app-showcase__btn {
+    width: min(100%, 188px);
+  }
+
+  .app-showcase__badge-img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .app-showcase__visual {
+    min-height: 360px;
+  }
+
+  .app-showcase__phone-stack {
+    max-width: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-showcase__shine-bar {
+    animation: none;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,122 @@
+/* Cabeçalho editorial compartilhado — número grande + selo dourado + título + lede */
+
+.section-editorial {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1.25rem, 4vw, 3rem);
+  align-items: start;
+  padding-left: clamp(0.5rem, 2vw, 1rem);
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+}
+
+.brand-story__inner > .section-editorial {
+  margin-bottom: 0;
+}
+
+.section-editorial__index {
+  font-family: var(--font-display, "Archivo Black", sans-serif);
+  font-size: clamp(3.25rem, 10vw, 6.25rem);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+.section-editorial--dark .section-editorial__index {
+  color: rgba(255, 255, 255, 0.06);
+}
+
+/* Números em destaque — identidade, equipe e galeria */
+.brand-story .section-editorial--dark .section-editorial__index,
+.team-editorial .section-editorial--dark .section-editorial__index,
+.gallery-premium .section-editorial--dark .section-editorial__index {
+  color: #f8f8f9;
+}
+
+.section-editorial--light .section-editorial__index {
+  color: #000000;
+}
+
+.section-editorial__text {
+  min-width: 0;
+}
+
+.section-editorial__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #c9a227;
+  margin: 0 0 1rem;
+}
+
+.section-editorial__title {
+  font-family: var(--font-display, "Archivo Black", sans-serif);
+  font-size: clamp(2rem, 5.2vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+  max-width: 22ch;
+}
+
+.section-editorial--dark .section-editorial__title {
+  color: #fafafa;
+}
+
+.section-editorial--light .section-editorial__title {
+  color: #0a0a0a;
+}
+
+.section-editorial__title em {
+  font-style: normal;
+}
+
+.section-editorial--dark .section-editorial__title em {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.section-editorial--light .section-editorial__title em {
+  color: rgba(10, 10, 10, 0.38);
+}
+
+.section-editorial__lede {
+  margin: 0;
+  font-size: clamp(1rem, 1.45vw, 1.14rem);
+  line-height: 1.55;
+  max-width: 42ch;
+  font-weight: 500;
+}
+
+.section-editorial--dark .section-editorial__lede {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.section-editorial--dark .section-editorial__lede strong {
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 600;
+}
+
+.section-editorial--light .section-editorial__lede {
+  color: #454545;
+}
+
+.section-editorial--light .section-editorial__lede strong {
+  color: #0a0a0a;
+  font-weight: 600;
+}
+
+@media (max-width: 980px) {
+  .section-editorial {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .section-editorial__index {
+    font-size: clamp(2.75rem, 15vw, 4.5rem);
+    margin-bottom: -0.35rem;
+  }
+
+  .section-editorial__title {
+    max-width: none;
+  }
+}
