@@ -614,6 +614,12 @@ a {
   }
 }
 
+@media (max-width: 768px) {
+  .hero-title-barber {
+    text-shadow: none;
+  }
+}
+
 .hero-sub {
   font-size: clamp(1.15rem, 2.5vw, 1.5rem);
   font-weight: 500;
