@@ -154,6 +154,41 @@
     a.setAttribute("href", STORE_URL);
   });
 
+  /* Hero — rotação suave da segunda linha do título */
+  var phraseStack = document.querySelector(".hero-phrase-slot__stack");
+  if (phraseStack) {
+    var phraseEls = phraseStack.querySelectorAll(".hero-phrase-slot__phrase");
+    var phraseIx = 0;
+    var phraseTimer = null;
+
+    function syncPhraseAria() {
+      phraseEls.forEach(function (el, i) {
+        var on = i === phraseIx;
+        el.classList.toggle("is-active", on);
+        el.setAttribute("aria-hidden", on ? "false" : "true");
+      });
+    }
+
+    function nextPhrase() {
+      phraseIx = (phraseIx + 1) % phraseEls.length;
+      syncPhraseAria();
+      schedulePhrase();
+    }
+
+    function schedulePhrase() {
+      if (phraseTimer) clearTimeout(phraseTimer);
+      var ms = 2000 + Math.floor(Math.random() * 1001);
+      phraseTimer = window.setTimeout(nextPhrase, ms);
+    }
+
+    if (phraseEls.length > 1 && !prefersReduced) {
+      syncPhraseAria();
+      schedulePhrase();
+    } else {
+      syncPhraseAria();
+    }
+  }
+
   /* Hero parallax (subtle) */
   var heroBg = document.querySelector(".hero-bg img");
   if (heroBg && !prefersReduced) {

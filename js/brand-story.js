@@ -83,7 +83,7 @@
         if (mutedTitle) {
           tl.to(
             mutedTitle,
-            { color: "rgba(10, 10, 10, 0.38)", duration: 1.05, ease: "power2.inOut" },
+            { color: "#c9a227", duration: 1.05, ease: "power2.inOut" },
             0.52
           );
         }
@@ -165,7 +165,7 @@
         if (mutedTitle) {
           tlM.to(
             mutedTitle,
-            { color: "rgba(10, 10, 10, 0.38)", duration: 0.75, ease: "power2.inOut" },
+            { color: "#c9a227", duration: 0.75, ease: "power2.inOut" },
             0.3
           );
         }

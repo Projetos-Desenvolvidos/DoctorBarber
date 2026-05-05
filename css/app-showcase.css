@@ -80,6 +80,10 @@
   gap: 0.85rem;
 }
 
+.app-showcase__stores--wa {
+  justify-content: flex-start;
+}
+
 .app-showcase__btn {
   --badge-h: 56px;
   --badge-w: 188px;

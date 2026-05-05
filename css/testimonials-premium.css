@@ -39,13 +39,13 @@
 .testimonials-premium__summary-title {
   margin: 0 0 0.35rem;
   font-family: var(--font-display, "Archivo Black", sans-serif);
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(0.88rem, 1.65vw, 1.06rem);
   letter-spacing: -0.02em;
 }
 
 .testimonials-premium__summary-stars {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.78rem;
   letter-spacing: 0.12em;
   color: #f4c430;
 }
@@ -57,15 +57,33 @@
 .testimonials-premium__summary-score strong {
   display: block;
   font-family: var(--font-display, "Archivo Black", sans-serif);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.4rem, 3.2vw, 1.85rem);
   line-height: 1;
 }
 
 .testimonials-premium__summary-score span {
   display: block;
   margin-top: 0.3rem;
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   color: rgba(255, 255, 255, 0.72);
+}
+
+/* Cabeçalho editorial — um pouco menor só nesta seção */
+.testimonials-premium .section-editorial__index {
+  font-size: clamp(2.35rem, 8vw, 4.75rem);
+}
+
+.testimonials-premium .section-editorial__title {
+  font-size: clamp(1.55rem, 4.2vw, 2.75rem);
+}
+
+.testimonials-premium .section-editorial__lede {
+  font-size: clamp(0.92rem, 1.35vw, 1.05rem);
+}
+
+.testimonials-premium .section-editorial__eyebrow {
+  font-size: 0.65rem;
+  margin-bottom: 0.75rem;
 }
 
 .testimonials-premium__track-wrap {
@@ -150,7 +168,7 @@
 
 .testimonial-card__name {
   margin: 0 0 0.15rem;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--text, #0a0a0a);
 }
@@ -165,8 +183,8 @@
 
 .testimonial-card__text {
   margin: 0;
-  font-size: 0.93rem;
-  line-height: 1.62;
+  font-size: 0.84rem;
+  line-height: 1.58;
   color: var(--text-muted, #5c5c5c);
 }
 
@@ -253,7 +271,7 @@
 .testimonials-premium__cta-title {
   margin: 0 0 0.45rem;
   font-family: var(--font-display, "Archivo Black", sans-serif);
-  font-size: clamp(1.3rem, 2.8vw, 1.75rem);
+  font-size: clamp(1.05rem, 2.35vw, 1.45rem);
   line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--text, #0a0a0a);
@@ -263,8 +281,8 @@
 .testimonials-premium__cta-text {
   margin: 0;
   max-width: 58ch;
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-size: 0.84rem;
+  line-height: 1.52;
   color: var(--text-muted, #5c5c5c);
 }
 
@@ -294,6 +312,12 @@
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 16px 28px rgba(0, 0, 0, 0.16);
   background: #000000;
+}
+
+@media (max-width: 980px) {
+  .testimonials-premium .section-editorial__index {
+    font-size: clamp(2rem, 13vw, 3.35rem);
+  }
 }
 
 @media (max-width: 900px) {

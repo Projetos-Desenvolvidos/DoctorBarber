@@ -9,7 +9,8 @@
   margin-bottom: clamp(2rem, 4vw, 2.75rem);
 }
 
-.brand-story__inner > .section-editorial {
+.brand-story__inner > .section-editorial,
+.brand-story__intro-block > .section-editorial {
   margin-bottom: 0;
 }
 
@@ -25,9 +26,8 @@
   color: rgba(255, 255, 255, 0.06);
 }
 
-/* Números em destaque — identidade, equipe e galeria */
+/* Números em destaque — identidade e galeria */
 .brand-story .section-editorial--dark .section-editorial__index,
-.team-editorial .section-editorial--dark .section-editorial__index,
 .gallery-premium .section-editorial--dark .section-editorial__index {
   color: #f8f8f9;
 }

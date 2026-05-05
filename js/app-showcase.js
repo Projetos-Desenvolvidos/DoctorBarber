@@ -1,5 +1,5 @@
 /**
- * Black Stylle — seção app: GSAP + ScrollTrigger
+ * Doctor Barber — seção app: GSAP + ScrollTrigger
  * Um único PNG (celular1) + rotação 3D contínua — evita corte entre duas fotos.
  * Substitua STORE_IOS_URL e STORE_ANDROID_URL pelos links reais das lojas.
  */
