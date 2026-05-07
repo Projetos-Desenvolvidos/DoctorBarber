@@ -240,6 +240,49 @@
   margin-top: 1.5rem;
 }
 
+.brand-story__btn-360 {
+  position: relative;
+  border-color: rgba(201, 162, 39, 0.95);
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.28), rgba(201, 162, 39, 0.08));
+  color: #fff3c4;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 10px 24px rgba(201, 162, 39, 0.22),
+    0 0 0 1px rgba(201, 162, 39, 0.35) inset;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+  animation: brand-story-btn-pulse 2.4s ease-in-out infinite;
+}
+
+.brand-story__btn-360:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.4), rgba(201, 162, 39, 0.14));
+  box-shadow:
+    0 16px 34px rgba(201, 162, 39, 0.32),
+    0 0 0 1px rgba(201, 162, 39, 0.55) inset;
+}
+
+.brand-story__btn-360:focus-visible {
+  outline: 2px solid rgba(201, 162, 39, 0.92);
+  outline-offset: 3px;
+}
+
+@keyframes brand-story-btn-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 10px 24px rgba(201, 162, 39, 0.22),
+      0 0 0 1px rgba(201, 162, 39, 0.35) inset;
+  }
+  50% {
+    box-shadow:
+      0 14px 30px rgba(201, 162, 39, 0.34),
+      0 0 0 1px rgba(201, 162, 39, 0.5) inset;
+  }
+}
+
 .brand-story .section-editorial__index {
   color: rgba(224, 224, 224, 0.9);
 }
