@@ -328,6 +328,54 @@ a {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
+/* Header — CTA WhatsApp (substitui Contato) */
+.site-header .site-nav .nav-cta--wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.48rem 1rem;
+  border: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f6fff9;
+  text-decoration: none;
+  background: linear-gradient(165deg, #2fe077 0%, #25d366 38%, #128c7e 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.18) inset,
+    0 0 0 2px rgb(54 205 66 / 85%),
+    0 8px 28px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.26s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+    box-shadow 0.26s ease,
+    filter 0.22s ease;
+}
+
+.site-header .site-nav .nav-cta--wa__icon {
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+.site-header .site-nav .nav-cta--wa:hover {
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.06);
+  border-color: transparent;
+  background: linear-gradient(165deg, #2fe077 0%, #25d366 38%, #128c7e 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.42) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.15) inset,
+    0 0 0 2px rgb(54 205 66 / 95%),
+    0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.site-header .site-nav .nav-cta--wa:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 4px;
+}
+
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
@@ -382,6 +430,15 @@ a {
     text-align: center;
     border-radius: 4px;
   }
+
+  .site-header .site-nav a.nav-cta--wa {
+    border-bottom: none;
+    justify-content: center;
+    padding: 0.85rem 1.15rem;
+    margin-top: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+  }
 }
 
 /* Buttons */
@@ -417,7 +474,7 @@ a {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.03);
   box-shadow: 0 8px 36px rgba(0, 0, 0, 0.22);
 }
 
@@ -430,7 +487,7 @@ a {
 .btn-ghost:hover {
   border-color: rgba(0, 0, 0, 0.2);
   background: #ffffff;
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .btn-outline {
@@ -441,7 +498,7 @@ a {
 
 .btn-outline:hover {
   background: rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .btn-lg {
@@ -659,7 +716,7 @@ a {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.35) inset,
     0 -1px 0 rgba(0, 0, 0, 0.18) inset,
-    0 0 0 2px rgba(201, 162, 39, 0.85),
+    0 0 0 2px rgb(54 205 66 / 85%),
     0 8px 28px rgba(0, 0, 0, 0.45);
   transition:
     transform 0.28s var(--ease-spring),
@@ -682,12 +739,12 @@ a {
 }
 
 .btn-hero-wa:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px) scale(1.03);
   filter: brightness(1.06);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.42) inset,
     0 -1px 0 rgba(0, 0, 0, 0.15) inset,
-    0 0 0 2px rgba(232, 204, 102, 0.95),
+    0 0 0 2px rgb(54 205 66 / 95%),
     0 12px 36px rgba(0, 0, 0, 0.5);
 }
 
@@ -725,7 +782,7 @@ a {
 }
 
 .btn-hero-cortes:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.03);
   border-color: rgba(201, 162, 39, 0.75);
   background: rgba(201, 162, 39, 0.12);
   color: #fff;
@@ -792,8 +849,10 @@ a {
   text-transform: uppercase;
   text-decoration: none;
   box-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.18),
-    0 12px 32px rgba(37, 211, 102, 0.42);
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.18) inset,
+    0 0 0 2px rgb(54 205 66 / 85%),
+    0 8px 28px rgba(0, 0, 0, 0.45);
   transition:
     transform 0.25s var(--ease-out),
     box-shadow 0.25s ease,
@@ -808,19 +867,23 @@ a {
 }
 
 .whatsapp-float:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px) scale(1.03);
   background: #20bd5a;
   box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.2),
-    0 16px 40px rgba(37, 211, 102, 0.48);
+    0 1px 0 rgba(255, 255, 255, 0.42) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.15) inset,
+    0 0 0 2px rgb(54 205 66 / 95%),
+    0 12px 36px rgba(0, 0, 0, 0.5);
 }
 
 .whatsapp-float:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: 3px;
   box-shadow:
-    0 0 0 3px #128c7e,
-    0 12px 32px rgba(37, 211, 102, 0.45);
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.18) inset,
+    0 0 0 2px rgb(54 205 66 / 85%),
+    0 8px 28px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 640px) {
@@ -991,18 +1054,11 @@ a {
   border: 1px solid var(--border);
   border-radius: 4px;
   position: relative;
-  overflow: hidden;
 }
 
-.cta-inner::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 50%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.04), transparent 70%);
-  pointer-events: none;
+/* Título em tom único (sem cinza no destaque) */
+.cta-inner .section-editorial--light .section-editorial__title em {
+  color: #0a0a0a;
 }
 
 .cta-copy {
@@ -1034,8 +1090,17 @@ a {
   position: relative;
   z-index: 1;
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 0.85rem;
+}
+
+@media (max-width: 540px) {
+  .cta-actions .btn-hero-wa {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Footer premium — paleta alinhada ao header (#0a0a0a) e ao site */
@@ -1201,7 +1266,7 @@ a {
 .footer-premium__wa-hero:hover {
   border-color: rgba(255, 255, 255, 0.28);
   background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-2px) scale(1.01);
+  transform: translateY(-2px) scale(1.03);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
 }
 
@@ -1293,7 +1358,7 @@ a {
   border-color: rgba(255, 255, 255, 0.28);
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
-  transform: translateX(4px) scale(1.02);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .footer-premium__social-btn:hover svg {
@@ -1377,7 +1442,8 @@ a {
   justify-content: flex-end;
 }
 
-.footer-premium__cta-stores--wa .btn-lg {
+.footer-premium__cta-stores--wa .btn-lg,
+.footer-premium__cta-stores--wa .btn-hero-wa {
   flex: 0 1 auto;
 }
 
@@ -1483,7 +1549,7 @@ a {
   }
 
   .footer-premium__social-btn:hover {
-    transform: scale(1.02);
+    transform: translateY(-2px) scale(1.03);
   }
 
   .footer-premium__cta {
@@ -1506,7 +1572,8 @@ a {
     width: 100%;
   }
 
-  .footer-premium__cta-stores--wa .btn-lg {
+  .footer-premium__cta-stores--wa .btn-lg,
+  .footer-premium__cta-stores--wa .btn-hero-wa {
     flex: 1 1 auto;
     width: min(100%, 20rem);
     justify-content: center;
@@ -1567,12 +1634,14 @@ a {
   }
 
   .btn,
-  .servico-card {
+  .servico-showcase,
+  .servico-panel {
     transition: none;
   }
 
   .btn:hover,
-  .servico-card:hover {
+  .servico-showcase:hover,
+  .servico-panel:hover {
     transform: none;
   }
 }

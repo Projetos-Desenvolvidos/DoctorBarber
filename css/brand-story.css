@@ -257,7 +257,7 @@
 }
 
 .brand-story__btn-360:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.03);
   background: linear-gradient(135deg, rgba(201, 162, 39, 0.4), rgba(201, 162, 39, 0.14));
   box-shadow:
     0 16px 34px rgba(201, 162, 39, 0.32),

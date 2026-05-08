@@ -1,0 +1,114 @@
+/* Faixa pós-hero — marquee só CSS (cores Doctor Barber) */
+.marquee-strip {
+  --marquee-border-subtle: rgb(75 75 75 / 85%);
+  --marquee-bg: #101010;
+  --marquee-text: #a9a8a9;
+  --marquee-accent: #c9a227;
+
+  position: relative;
+  z-index: 2;
+  /* Fecha fenda de subpixel no Safari/mobile — evita o cinza do body aparecer entre hero e faixa */
+  margin-top: -1px;
+  transform: translateZ(0);
+
+  border-top: 1px solid var(--marquee-border-subtle);
+  border-bottom: 1px solid var(--marquee-border-subtle);
+  box-shadow:
+    inset 0 1px 0 rgba(201, 162, 39, 0.12),
+    inset 0 -1px 0 rgba(201, 162, 39, 0.12);
+  background-color: var(--marquee-bg);
+  background-clip: padding-box;
+  overflow: hidden;
+  padding-block: clamp(1.75rem, 2vw, 1.95rem);
+  max-width: 100%;
+}
+
+/* Evita duas linhas: a borda inferior fica só na faixa (igual em mobile e desktop) */
+.marquee-strip + .brand-story {
+  border-top: none;
+}
+
+.marquee-strip__track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee-linear 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee-strip:hover .marquee-strip__track {
+  animation-play-state: paused;
+}
+
+.marquee-strip span {
+  flex-shrink: 0;
+  font-family: var(--font-body, "DM Sans", system-ui);
+  font-size: clamp(0.65rem, 1.35vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--marquee-text);
+  white-space: nowrap;
+}
+
+.marquee-strip span::after {
+  content: " · ";
+  margin-left: 3rem;
+  color: var(--marquee-accent);
+  opacity: 0.58;
+  letter-spacing: 0.15em;
+}
+
+.marquee-strip span:last-child::after {
+  content: none;
+  margin-left: 0;
+}
+
+@keyframes marquee-linear {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee-strip {
+    margin-top: -3px;
+  }
+}
+
+@media (max-width: 640px) {
+  .marquee-strip__track {
+    animation-duration: 44s;
+    gap: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .marquee-strip span::after {
+    margin-left: clamp(1.75rem, 5vw, 2.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-strip__track {
+    animation: none;
+    transform: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 1rem;
+  }
+
+  .marquee-strip span {
+    white-space: normal;
+    text-align: center;
+    letter-spacing: 0.22em;
+  }
+
+  .marquee-strip span::after {
+    content: "";
+    margin-left: 0;
+  }
+}

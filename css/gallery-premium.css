@@ -137,7 +137,7 @@
 }
 
 .spotlight__cta:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-2px) scale(1.03);
   box-shadow: 0 14px 48px rgba(201, 162, 39, 0.45);
   filter: brightness(1.05);
 }
@@ -353,6 +353,7 @@
 }
 
 .netflix-card__btn:hover {
+  transform: translateY(-2px) scale(1.03);
   background: #e0c04a;
   color: #030303;
 }
@@ -375,6 +376,7 @@
 }
 
 .netflix-gallery__nav:hover {
+  transform: translateY(-2px) scale(1.03);
   background: rgba(201, 162, 39, 0.2);
   border-color: var(--gp-gold);
 }

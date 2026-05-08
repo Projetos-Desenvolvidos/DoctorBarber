@@ -117,7 +117,7 @@
 }
 
 .app-showcase__btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .app-showcase__btn:hover .app-showcase__badge-img {
