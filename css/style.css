@@ -1634,14 +1634,14 @@ a {
   }
 
   .btn,
-  .servico-showcase,
-  .servico-panel {
+  .servicos-premium__card,
+  .servicos-more__category {
     transition: none;
   }
 
   .btn:hover,
-  .servico-showcase:hover,
-  .servico-panel:hover {
+  .servicos-premium__card:hover,
+  .servicos-more__category:hover {
     transform: none;
   }
 }

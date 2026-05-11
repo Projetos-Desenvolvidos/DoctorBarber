@@ -63,7 +63,7 @@
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
           var el = entry.target;
-          var parent = el.closest(".servicos-premium__composition, .galeria-grid, .footer-premium");
+          var parent = el.closest(".servicos-premium__hero-grid, .galeria-grid, .footer-premium");
           var delay = 0;
           if (parent) {
             var siblings = parent.querySelectorAll("[data-reveal]");
