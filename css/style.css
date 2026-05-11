@@ -506,7 +506,7 @@ a {
   font-size: 0.95rem;
 }
 
-/* Hero */
+/* Hero — sozinho ocupa a dobra; com .hero-first-screen divide 100dvh com a faixa marquee */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -517,6 +517,22 @@ a {
   padding: calc(var(--header-h) + 2rem) 1.25rem 4rem;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+.hero-first-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-first-screen > .hero {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.hero-first-screen > .marquee-strip {
+  flex-shrink: 0;
 }
 
 .hero-bg {
@@ -564,35 +580,6 @@ a {
   margin: 0 auto;
   padding-left: clamp(0.25rem, 2vw, 0.5rem);
   text-align: left;
-}
-
-.hero-logo-wrap {
-  margin: 0 0 1.35rem;
-  line-height: 0;
-}
-
-.hero-logo {
-  display: block;
-  height: clamp(96px, 18vw, 168px);
-  width: auto;
-  max-height: 168px;
-  max-width: min(300px, 72vw);
-  object-fit: contain;
-  object-position: left center;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .hero-logo {
-    height: clamp(120px, 38vw, 220px);
-    max-height: 220px;
-    max-width: min(340px, 88vw);
-    object-position: left center;
-  }
-
-  .hero-logo-wrap {
-    margin-bottom: 1.5rem;
-  }
 }
 
 .hero-tag {
@@ -853,10 +840,23 @@ a {
     0 -1px 0 rgba(0, 0, 0, 0.18) inset,
     0 0 0 2px rgb(54 205 66 / 85%),
     0 8px 28px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(0.5rem);
   transition:
-    transform 0.25s var(--ease-out),
+    opacity 0.35s var(--ease-out),
+    visibility 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out),
     box-shadow 0.25s ease,
     background 0.25s ease;
+}
+
+.whatsapp-float.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .whatsapp-float svg {
@@ -866,7 +866,7 @@ a {
   color: #ffffff;
 }
 
-.whatsapp-float:hover {
+.whatsapp-float.is-visible:hover {
   transform: translateY(-2px) scale(1.03);
   background: #20bd5a;
   box-shadow:
@@ -876,7 +876,7 @@ a {
     0 12px 36px rgba(0, 0, 0, 0.5);
 }
 
-.whatsapp-float:focus-visible {
+.whatsapp-float.is-visible:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: 3px;
   box-shadow:
@@ -1634,14 +1634,12 @@ a {
   }
 
   .btn,
-  .servicos-premium__card,
-  .servicos-more__category {
+  .servicos-luxury__card {
     transition: none;
   }
 
   .btn:hover,
-  .servicos-premium__card:hover,
-  .servicos-more__category:hover {
+  .servicos-luxury__card:hover {
     transform: none;
   }
 }

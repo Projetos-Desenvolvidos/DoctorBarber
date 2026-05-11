@@ -61,6 +61,7 @@
   </header>
 
   <main id="topo">
+    <div class="hero-first-screen">
     <section class="hero">
       <div class="hero-bg">
         <img src="img/ambiente3.png" alt="" width="1920" height="1920" fetchpriority="high" decoding="async" />
@@ -68,10 +69,6 @@
         <div class="hero-lines" aria-hidden="true"></div>
       </div>
       <div class="hero-content">
-        <div class="hero-logo-wrap">
-          <img class="hero-logo" src="img/logo.png" alt="" width="300" height="300" decoding="async"
-            role="presentation" />
-        </div>
         <h1 class="hero-title">
           <span class="hero-title-line">Mais que um corte.</span>
           <span class="hero-title-line hero-phrase-slot" aria-live="polite">
@@ -131,6 +128,7 @@
         <span>Música curada</span>
         <span>Higiene impecável</span>
       </div>
+    </div>
     </div>
 
     <section id="sobre" class="brand-story" data-no-text-anim aria-labelledby="brand-story-heading">
@@ -239,172 +237,388 @@
       </div>
     </section>
 
-    <section id="servicos" class="section servicos servicos-premium" data-no-text-anim
+    <section id="servicos" class="section servicos servicos-premium servicos-luxury" data-no-text-anim
       aria-labelledby="servicos-heading">
-      <div class="section-inner servicos-premium__inner">
-        <header class="servicos-premium__head section-editorial section-editorial--light">
+      <div class="section-inner servicos-premium__inner servicos-luxury__wrap">
+        <header class="section-editorial section-editorial--light servicos-luxury__head" data-luxury-reveal>
           <span class="section-editorial__index" aria-hidden="true">02</span>
           <div class="section-editorial__text">
             <p class="section-editorial__eyebrow">Doctor Barber</p>
-            <h2 id="servicos-heading" class="section-editorial__title">Serviços Premium</h2>
-            <p class="section-editorial__lede servicos-premium__lede">
-              Mais do que um corte. Uma experiência completa de cuidado, estilo e presença.
+            <h2 id="servicos-heading" class="section-editorial__title">Experiências de <em>Estilo</em></h2>
+            <p class="section-editorial__lede">
+              Curadoria de cuidados, precisão e presença — cada protocolo pensado para o seu tempo valer mais.
             </p>
           </div>
         </header>
 
-        <div class="servicos-premium__hero-grid" aria-label="Serviços em destaque">
-          <article class="servicos-premium__card" data-servico-card>
-            <div class="servicos-premium__card-glass" aria-hidden="true"></div>
-            <div class="servicos-premium__card-body">
-              <h3 class="servicos-premium__card-name">Corte</h3>
-              <p class="servicos-premium__card-desc">Técnica afiada, proporção impecável e acabamento que valoriza seu
-                formato — do social ao fade premium.</p>
-              <p class="servicos-premium__card-price" aria-label="Preço">R$&nbsp;100</p>
-              <a href="https://wa.me/5511944013598" class="servicos-premium__card-btn" target="_blank"
-                rel="noopener noreferrer">Agendar</a>
-            </div>
-          </article>
-
-          <article class="servicos-premium__card" data-servico-card>
-            <div class="servicos-premium__card-glass" aria-hidden="true"></div>
-            <div class="servicos-premium__card-body">
-              <h3 class="servicos-premium__card-name">Barba</h3>
-              <p class="servicos-premium__card-desc">Desenho preciso, contorno limpo e ritual de finalização para uma
-                barba com presença e conforto.</p>
-              <p class="servicos-premium__card-price" aria-label="Preço">R$&nbsp;75</p>
-              <a href="https://wa.me/5511944013598" class="servicos-premium__card-btn" target="_blank"
-                rel="noopener noreferrer">Agendar</a>
-            </div>
-          </article>
-
-          <article class="servicos-premium__card servicos-premium__card--featured" data-servico-card>
-            <div class="servicos-premium__card-glass" aria-hidden="true"></div>
-            <span class="servicos-premium__card-badge">Mais vendido</span>
-            <div class="servicos-premium__card-body">
-              <h3 class="servicos-premium__card-name">Combo Barba + Cabelo</h3>
-              <p class="servicos-premium__card-desc">Do couro cabeludo ao contorno: harmonia total para quem quer sair
-                pronto para qualquer ocasião.</p>
-              <p class="servicos-premium__card-price" aria-label="Preço">R$&nbsp;150</p>
-              <a href="https://wa.me/5511944013598" class="servicos-premium__card-btn" target="_blank"
-                rel="noopener noreferrer">Agendar</a>
-            </div>
-          </article>
-
-          <article class="servicos-premium__card" data-servico-card>
-            <div class="servicos-premium__card-glass" aria-hidden="true"></div>
-            <div class="servicos-premium__card-body">
-              <h3 class="servicos-premium__card-name">Barba Executiva</h3>
-              <p class="servicos-premium__card-desc">Acabamento refinado e linhas definidas para quem precisa de presença
-                imediata no trabalho e no social.</p>
-              <p class="servicos-premium__card-price" aria-label="Preço">R$&nbsp;100</p>
-              <a href="https://wa.me/5511944013598" class="servicos-premium__card-btn" target="_blank"
-                rel="noopener noreferrer">Agendar</a>
-            </div>
-          </article>
-
-          <article class="servicos-premium__card" data-servico-card>
-            <div class="servicos-premium__card-glass" aria-hidden="true"></div>
-            <div class="servicos-premium__card-body">
-              <h3 class="servicos-premium__card-name">Platinado</h3>
-              <p class="servicos-premium__card-desc">Transformação com controle de tom e saúde dos fios — resultado
-                cinematográfico com cuidado profissional.</p>
-              <p class="servicos-premium__card-price" aria-label="Preço">R$&nbsp;290</p>
-              <a href="https://wa.me/5511944013598" class="servicos-premium__card-btn" target="_blank"
-                rel="noopener noreferrer">Agendar</a>
-            </div>
-          </article>
-
-          <article class="servicos-premium__card" data-servico-card>
-            <div class="servicos-premium__card-glass" aria-hidden="true"></div>
-            <div class="servicos-premium__card-body">
-              <h3 class="servicos-premium__card-name">Progressiva</h3>
-              <p class="servicos-premium__card-desc">Alinhamento, brilho e disciplina dos fios com protocolo premium e
-                acabamento natural.</p>
-              <p class="servicos-premium__card-price" aria-label="Preço">R$&nbsp;190</p>
-              <a href="https://wa.me/5511944013598" class="servicos-premium__card-btn" target="_blank"
-                rel="noopener noreferrer">Agendar</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="servicos-more" aria-labelledby="servicos-more-heading">
-          <div class="servicos-more__intro">
-            <h3 id="servicos-more-heading" class="servicos-more__title">Muito mais que uma barbearia</h3>
-            <p class="servicos-more__subtitle">Explore o que mais oferecemos — sempre com o mesmo padrão Doctor Barber.</p>
+        <div class="servicos-luxury__group" aria-labelledby="lux-cortes">
+          <div class="servicos-luxury__group-head" data-luxury-reveal>
+            <h3 id="lux-cortes" class="servicos-luxury__cat">Cortes</h3>
+            <p class="servicos-luxury__cat-note">Forma, proporção e acabamento impecável.</p>
           </div>
-          <div class="servicos-more__grid">
-            <article class="servicos-more__category" data-servico-more>
-              <h3 class="servicos-more__cat-head"><span class="servicos-more__cat-icon" aria-hidden="true">💈</span>
-                Cortes &amp; Estilo</h3>
-              <ul class="servicos-more__list">
-                <li>Corte Máquina</li>
-                <li>Infantil</li>
-                <li>Penteado</li>
-                <li>Botox</li>
-                <li>Relaxamento</li>
-              </ul>
+          <div class="servicos-luxury__grid">
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Corte</h4>
+              <p class="servicos-luxury__desc">Assinatura alinhada ao seu rosto, com transições limpas e postura de
+                alto padrão.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 100</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
             </article>
-            <article class="servicos-more__category" data-servico-more>
-              <h3 class="servicos-more__cat-head"><span class="servicos-more__cat-icon" aria-hidden="true">🧔</span> Barba
-              </h3>
-              <ul class="servicos-more__list">
-                <li>Barba Executiva</li>
-                <li>Coloração</li>
-                <li>Maquiagem</li>
-                <li>Pezinho</li>
-              </ul>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Corte de cabelo com máquina</h4>
+              <p class="servicos-luxury__desc">Ritmo ágil, linha definida e controle absoluto do degradê.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 75</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
             </article>
-            <article class="servicos-more__category" data-servico-more>
-              <h3 class="servicos-more__cat-head"><span class="servicos-more__cat-icon" aria-hidden="true">✨</span>
-                Estética</h3>
-              <ul class="servicos-more__list">
-                <li>Sobrancelha</li>
-                <li>Limpeza de Pele</li>
-                <li>Argiloterapia</li>
-                <li>Massagem</li>
-              </ul>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Pezinho simples</h4>
+              <p class="servicos-luxury__desc">Retoque rápido para manter o corte impecável entre visitas.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 30</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
             </article>
-            <article class="servicos-more__category" data-servico-more>
-              <h3 class="servicos-more__cat-head"><span class="servicos-more__cat-icon" aria-hidden="true">🎨</span>
-                Transformações</h3>
-              <ul class="servicos-more__list">
-                <li>Platinado</li>
-                <li>Progressiva</li>
-                <li>Descoloração</li>
-                <li>Coloração Capilar</li>
-              </ul>
-            </article>
-            <article class="servicos-more__category" data-servico-more>
-              <h3 class="servicos-more__cat-head"><span class="servicos-more__cat-icon" aria-hidden="true">🦶</span>
-                Podologia</h3>
-              <ul class="servicos-more__list">
-                <li>Podoprofilaxia</li>
-                <li>Ortese</li>
-                <li>Hidratação</li>
-                <li>Massagem</li>
-              </ul>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Cabelo infantil</h4>
+              <p class="servicos-luxury__desc">Atendimento acolhedor, paciência e estética pensada para os pequenos.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 100</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
             </article>
           </div>
         </div>
 
-        <div class="servicos-premium__cta-block" data-servico-cta>
-          <div class="servicos-premium__cta-glow" aria-hidden="true"></div>
-          <div class="servicos-premium__cta-inner">
-            <h3 class="servicos-premium__cta-title">Seu visual fala antes de você.</h3>
-            <p class="servicos-premium__cta-text">Agende agora e viva a experiência premium da Doctor Barber.</p>
-            <a href="https://wa.me/5511944013598" class="btn btn-hero-wa servicos-premium__cta-wa" target="_blank"
-              rel="noopener noreferrer">
-              <span class="btn-hero-wa__glow" aria-hidden="true"></span>
-              <svg class="btn-hero-wa__icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"
-                aria-hidden="true">
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              <span class="btn-hero-wa__label">Agendar no WhatsApp</span>
-            </a>
+        <div class="servicos-luxury__group" aria-labelledby="lux-barba">
+          <div class="servicos-luxury__group-head" data-luxury-reveal>
+            <h3 id="lux-barba" class="servicos-luxury__cat">Barba</h3>
+            <p class="servicos-luxury__cat-note">Desenho, contorno e ritual de finalização.</p>
+          </div>
+          <div class="servicos-luxury__grid">
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Barba</h4>
+              <p class="servicos-luxury__desc">Contorno harmonizado e acabamento com sensação de leveza.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 75</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Barba executiva</h4>
+              <p class="servicos-luxury__desc">Presença imediata: linhas afiadas e acabamento boardroom-ready.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 100</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+          </div>
+          <div class="servicos-luxury__subhead" data-luxury-reveal>
+            <h4 class="servicos-luxury__subcat">Colorações</h4>
+            <p class="servicos-luxury__subnote">Tom controlado e respeito aos fios.</p>
+          </div>
+          <div class="servicos-luxury__grid">
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Coloração barba (tinta cliente)</h4>
+              <p class="servicos-luxury__desc">Aplicação refinada com produto trazido por você.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 60</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Coloração barba (tinta barbearia)</h4>
+              <p class="servicos-luxury__desc">Curadoria de tonalidade com nosso arsenal premium.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 90</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Coloração cabelo (tinta cliente)</h4>
+              <p class="servicos-luxury__desc">Resultado uniforme com protocolo delicado.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 70</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Coloração cabelo (tinta barbearia)</h4>
+              <p class="servicos-luxury__desc">Brilho, profundidade e cuidado em cada mecha.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 100</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
           </div>
         </div>
+
+        <div class="servicos-luxury__group servicos-luxury__group--combos" aria-labelledby="lux-combos">
+          <div class="servicos-luxury__group-head" data-luxury-reveal>
+            <h3 id="lux-combos" class="servicos-luxury__cat">Combos</h3>
+            <p class="servicos-luxury__cat-note">Experiências combinadas — mais valor, mesmo padrão premium.</p>
+          </div>
+          <div class="servicos-luxury__grid servicos-luxury__grid--dense">
+            <article class="servicos-luxury__card servicos-luxury__card--featured" data-luxury-reveal>
+              <span class="servicos-luxury__badge">Mais vendido</span>
+              <h4 class="servicos-luxury__name">Combo barba + cabelo</h4>
+              <p class="servicos-luxury__desc">Do topo ao contorno: harmonia total em uma única visita.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 150</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo barba + cabelo + sobrancelha</h4>
+              <p class="servicos-luxury__desc">Olhar completo, simetria e presença em um protocolo único.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 160</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo barba + pezinho + sobrancelha</h4>
+              <p class="servicos-luxury__desc">Retoque express com acabamento de salão.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 85</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo barba + sobrancelha</h4>
+              <p class="servicos-luxury__desc">Contorno da barba e olhar equilibrados.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 80</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo corte + sobrancelha</h4>
+              <p class="servicos-luxury__desc">Simetria facial e corte em harmonia.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 105</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo corte e barba executiva</h4>
+              <p class="servicos-luxury__desc">O melhor dos dois mundos: precisão total.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 180</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo barba, cabelo, esfoliação + massagem + banho</h4>
+              <p class="servicos-luxury__desc">Ritual completo de renovação e presença.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 200</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo maquiagem barba + cabelo</h4>
+              <p class="servicos-luxury__desc">Acabamento visual refinado para ocasiões especiais.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 80</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo corte + penteado</h4>
+              <p class="servicos-luxury__desc">Pronto para o momento: forma e estilo em conjunto.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 120</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo barboterapia + corte</h4>
+              <p class="servicos-luxury__desc">Cuidado profundo da barba aliado ao corte assinado.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 180</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card servicos-luxury__card--accent" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Combo barba e pezinho</h4>
+              <p class="servicos-luxury__desc">Alinhamento rápido com acabamento premium.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 85</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="servicos-luxury__group" aria-labelledby="lux-trat">
+          <div class="servicos-luxury__group-head" data-luxury-reveal>
+            <h3 id="lux-trat" class="servicos-luxury__cat">Tratamentos</h3>
+            <p class="servicos-luxury__cat-note">Protocolos que respeitam couro, pele e fios.</p>
+          </div>
+          <div class="servicos-luxury__grid servicos-luxury__grid--dense">
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Argiloterapia</h4>
+              <p class="servicos-luxury__desc">Purificação suave e sensação de leveza imediata.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 80</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Botox completo</h4>
+              <p class="servicos-luxury__desc">Disciplina e brilho com acabamento natural.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 200</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Botox franja</h4>
+              <p class="servicos-luxury__desc">Foco na frente do cabelo com movimento controlado.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 80</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Hidratação capilar</h4>
+              <p class="servicos-luxury__desc">Reposição e maciez com toque sedoso.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 50</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Limpeza de pele</h4>
+              <p class="servicos-luxury__desc">Revitalização discreta para pele em dia.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 40</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Lavagem</h4>
+              <p class="servicos-luxury__desc">Momento de pausa com produtos selecionados.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 20</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Higienização</h4>
+              <p class="servicos-luxury__desc">Cuidado essencial, rápido e preciso.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 10</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Relaxamento</h4>
+              <p class="servicos-luxury__desc">Alívio de tensão com experiência sensorial premium.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 130</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Progressiva</h4>
+              <p class="servicos-luxury__desc">Alinhamento duradouro com brilho controlado.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 190</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Descoloração</h4>
+              <p class="servicos-luxury__desc">Preparação cuidadosa para o próximo tom.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 70</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Platinado</h4>
+              <p class="servicos-luxury__desc">Transformação cinematográfica com acompanhamento técnico.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 290</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="servicos-luxury__group" aria-labelledby="lux-est">
+          <div class="servicos-luxury__group-head" data-luxury-reveal>
+            <h3 id="lux-est" class="servicos-luxury__cat">Estética</h3>
+            <p class="servicos-luxury__cat-note">Detalhes que elevam o retrato e a confiança.</p>
+          </div>
+          <div class="servicos-luxury__grid servicos-luxury__grid--dense">
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Sobrancelha</h4>
+              <p class="servicos-luxury__desc">Simetria e limpeza com traço natural.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 25</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Pigmentação de sobrancelha</h4>
+              <p class="servicos-luxury__desc">Definição suave para olhar mais presente.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 30</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Maquiagem barba</h4>
+              <p class="servicos-luxury__desc">Uniformização discreta e acabamento editorial.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 45</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Maquiagem capilar</h4>
+              <p class="servicos-luxury__desc">Realce controlado para fotos e eventos.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 45</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Penteado</h4>
+              <p class="servicos-luxury__desc">Textura e forma para ocasiões especiais.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 40</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Massagem</h4>
+              <p class="servicos-luxury__desc">Alívio rápido de tensão com toque preciso.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 20</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="servicos-luxury__group" aria-labelledby="lux-podo">
+          <div class="servicos-luxury__group-head" data-luxury-reveal>
+            <h3 id="lux-podo" class="servicos-luxury__cat">Podologia</h3>
+            <p class="servicos-luxury__cat-note">Cuidado técnico dos pés com protocolo premium.</p>
+          </div>
+          <div class="servicos-luxury__grid">
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Podologia hidratação parafina</h4>
+              <p class="servicos-luxury__desc">Maciez profunda e conforto duradouro.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 100</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Podologia infecção podal</h4>
+              <p class="servicos-luxury__desc">Acompanhamento cuidadoso e higiene impecável.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 150</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Podologia massagem</h4>
+              <p class="servicos-luxury__desc">Relaxamento focado em pontos de tensão.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 100</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Podologia ortese</h4>
+              <p class="servicos-luxury__desc">Suporte e conforto alinhados à sua pisada.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 80</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+            <article class="servicos-luxury__card" data-luxury-reveal>
+              <h4 class="servicos-luxury__name">Podoprofilaxia</h4>
+              <p class="servicos-luxury__desc">Prevenção e acabamento profissional dos pés.</p>
+              <p class="servicos-luxury__price"><span class="servicos-luxury__currency">R$</span> 140</p>
+              <a class="servicos-luxury__reserve" href="https://wa.me/5511944013598" target="_blank"
+                rel="noopener noreferrer">Reservar</a>
+            </article>
+          </div>
+        </div>
+
+        <footer class="servicos-luxury__footer" data-luxury-reveal>
+          <p class="servicos-luxury__footer-quote">Não é só um serviço. É uma experiência de presença e estilo.</p>
+          <a class="servicos-luxury__footer-btn" href="https://wa.me/5511944013598" target="_blank"
+            rel="noopener noreferrer">Reservar experiência</a>
+        </footer>
       </div>
     </section>
 
@@ -1071,7 +1285,7 @@
   </div>
 
   <a class="whatsapp-float" href="https://wa.me/5511944013598" target="_blank" rel="noopener noreferrer"
-    aria-label="Agendar pelo WhatsApp">
+    aria-label="Agendar pelo WhatsApp" aria-hidden="true" tabindex="-1">
     <svg class="btn-hero-wa__icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path
         d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -1090,6 +1304,7 @@
   <script src="js/servicos-premium.js"></script>
   <script src="js/testimonials-premium.js"></script>
   <script src="js/text-reveal-global.js"></script>
+  <script src="js/scroll-entrance.js"></script>
 </body>
 
 </html>

@@ -63,7 +63,7 @@
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
           var el = entry.target;
-          var parent = el.closest(".servicos-premium__hero-grid, .galeria-grid, .footer-premium");
+          var parent = el.closest(".servicos-luxury__grid, .galeria-grid, .footer-premium");
           var delay = 0;
           if (parent) {
             var siblings = parent.querySelectorAll("[data-reveal]");
@@ -208,5 +208,31 @@
       },
       { passive: true }
     );
+  }
+
+  /* Botão fixo WhatsApp — a partir da seção Identidade & história (#sobre) */
+  var waFloat = document.querySelector(".whatsapp-float");
+  var section01 = document.getElementById("sobre");
+  if (waFloat) {
+    if (!section01) {
+      waFloat.classList.add("is-visible");
+      waFloat.setAttribute("aria-hidden", "false");
+      waFloat.removeAttribute("tabindex");
+    } else {
+      function updateWaFloatVisibility() {
+        var r = section01.getBoundingClientRect();
+        var show = r.top < window.innerHeight;
+        waFloat.classList.toggle("is-visible", show);
+        waFloat.setAttribute("aria-hidden", show ? "false" : "true");
+        if (show) {
+          waFloat.removeAttribute("tabindex");
+        } else {
+          waFloat.setAttribute("tabindex", "-1");
+        }
+      }
+      updateWaFloatVisibility();
+      window.addEventListener("scroll", updateWaFloatVisibility, { passive: true });
+      window.addEventListener("resize", updateWaFloatVisibility);
+    }
   }
 })();

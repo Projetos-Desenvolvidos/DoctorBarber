@@ -43,13 +43,12 @@
 
   /* — Hero + header na entrada — */
   gsap.set(
-    ".hero-logo-wrap, .hero-tag, .hero-title-line, .hero-sub, .hero-actions .btn",
+    ".hero-tag, .hero-title-line, .hero-sub, .hero-actions .btn",
     { autoAlpha: 0, y: 30 }
   );
   gsap.set(".hero-scroll", { autoAlpha: 0 });
 
   var heroTl = gsap.timeline({ defaults: { ease: "power3.out" }, delay: 0.06 });
-  heroTl.to(".hero-logo-wrap", { autoAlpha: 1, y: 0, duration: 0.72 }, 0);
   heroTl.to(".hero-tag", { autoAlpha: 1, y: 0, duration: 0.62 }, 0.06);
   heroTl.to(".hero-title-line", { autoAlpha: 1, y: 0, duration: 0.68, stagger: 0.11 }, 0.1);
   heroTl.to(".hero-sub", { autoAlpha: 1, y: 0, duration: 0.62 }, 0.18);
@@ -87,22 +86,22 @@
   /* — Demais textos no scroll — */
   var scrollTargets = collectScrollTargets();
   if (scrollTargets.length) {
-    gsap.set(scrollTargets, { autoAlpha: 0, y: 26 });
+    gsap.set(scrollTargets, { autoAlpha: 0, y: 32 });
 
     ScrollTrigger.batch(scrollTargets, {
-      interval: 0.12,
-      batchMax: 8,
+      interval: 0.1,
+      batchMax: 10,
       onEnter: function (batch) {
         gsap.to(batch, {
           autoAlpha: 1,
           y: 0,
-          duration: 0.58,
-          stagger: 0.055,
-          ease: "power2.out",
+          duration: 0.68,
+          stagger: 0.065,
+          ease: "power3.out",
           overwrite: "auto",
         });
       },
-      start: "top 89%",
+      start: "top 86%",
       once: true,
     });
   }
