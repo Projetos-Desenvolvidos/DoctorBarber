@@ -20,7 +20,7 @@
     return;
   }
 
-  var speedPxPerSec = 36;
+  var speedPxPerSec = 58;
   /* Faixa [-segment, 0): fluxo visual esquerda→direita com cópia à direita da primeira fila. */
   var pos = 0;
   var segment = 1;

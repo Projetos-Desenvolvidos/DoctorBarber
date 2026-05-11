@@ -34,7 +34,7 @@
   align-items: center;
   gap: 3rem;
   width: max-content;
-  animation: marquee-linear 32s linear infinite;
+  animation: marquee-linear 22s linear infinite;
   will-change: transform;
 }
 
@@ -80,7 +80,7 @@
 
 @media (max-width: 640px) {
   .marquee-strip__track {
-    animation-duration: 44s;
+    animation-duration: 30s;
     gap: clamp(1.75rem, 5vw, 2.5rem);
   }
 
