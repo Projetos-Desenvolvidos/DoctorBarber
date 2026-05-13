@@ -258,14 +258,21 @@
   overflow: hidden;
   width: 100%;
   padding: 0.75rem 0 1.5rem;
-  /* Sem máscara no mobile: WebKit + transform costumam “sumir” faixa no iPhone. */
   mask-image: none;
   -webkit-mask-image: none;
-  touch-action: pan-y;
+  touch-action: none;
+  cursor: grab;
   overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   isolation: isolate;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.gallery-cut-marquee__viewport--dragging {
+  cursor: grabbing;
 }
 
 @media (min-width: 769px) {
@@ -281,6 +288,7 @@
   align-items: stretch;
   width: max-content;
   gap: 0;
+  will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -427,6 +435,8 @@
   .gallery-cut-marquee__viewport {
     mask-image: none;
     overflow: visible;
+    cursor: default;
+    touch-action: pan-y;
   }
 
   .gallery-cut-marquee__row--clone {

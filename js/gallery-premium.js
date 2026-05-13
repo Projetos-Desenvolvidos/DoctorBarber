@@ -1,5 +1,5 @@
 /**
- * Galeria premium — GSAP spotlight + carrossel infinito (marquee)
+ * Galeria premium — spotlight + carrossel (auto + arrastar)
  */
 (function () {
   "use strict";
@@ -55,16 +55,33 @@
     });
   }
 
-  /* ——— Carrossel infinito: GSAP (Safari/iPhone). ——— */
-  function initGalleryCutMarqueeMeasure(marquee) {
-    if (prefersReduced || !marquee || typeof gsap === "undefined") return;
+  /* ——— Carrossel infinito: auto suave + arrastar (pointer) + inércia ——— */
+  function initGalleryInfiniteDrag(marquee) {
+    if (prefersReduced || !marquee) return;
 
     var track = marquee.querySelector(".gallery-cut-marquee__track");
     var viewport = marquee.querySelector(".gallery-cut-marquee__viewport");
-    if (!track) return;
+    if (!track || !viewport) return;
 
-    var state = { tween: null };
-    var rafId;
+    if (typeof gsap !== "undefined") {
+      gsap.killTweensOf(track);
+    }
+
+    var loopW = 0;
+    var x = 0;
+    var phase = "idle";
+    var downClientX = 0;
+    var downClientY = 0;
+    var lastClientX = 0;
+    var velX = 0;
+    var moveHist = [];
+    var docPaused = false;
+    var rafHandle = 0;
+    var lastTick = 0;
+
+    var AUTO_PX_PER_S = 38;
+    var VEL_STOP = 5;
+    var FRICTION_PER_S = 3.2;
 
     function primeImages() {
       var imgs = track.querySelectorAll("img");
@@ -81,7 +98,7 @@
       return tasks.length ? Promise.all(tasks) : Promise.resolve();
     }
 
-    function readLoopWidthPx() {
+    function readLoopW() {
       var rows = track.querySelectorAll(".gallery-cut-marquee__row");
       if (rows.length < 2) return 0;
       void track.offsetHeight;
@@ -92,94 +109,165 @@
       return a;
     }
 
-    function applyShift() {
+    function wrap() {
+      if (loopW <= 0) return;
+      while (x <= -loopW) x += loopW;
+      while (x > 0) x -= loopW;
+    }
+
+    function paint() {
+      wrap();
+      track.style.transform = "translate3d(" + x + "px,0,0)";
+    }
+
+    function releaseVelocityPxPerS() {
+      if (moveHist.length < 2) return 0;
+      var n = moveHist.length;
+      var a = moveHist[n - 1];
+      var b = moveHist[n - 2];
+      var dt = a.t - b.t;
+      if (dt < 4) return 0;
+      return ((a.x - b.x) / dt) * 1000;
+    }
+
+    function remeasure() {
       primeImages().then(function () {
         requestAnimationFrame(function () {
-          var w = readLoopWidthPx();
-          if (w < 32) {
-            setTimeout(schedule, 48);
+          var nw = readLoopW();
+          if (nw < 32) {
+            setTimeout(remeasure, 72);
             return;
           }
-
-          gsap.killTweensOf(track);
-          gsap.set(track, { x: 0, force3D: true });
-
-          state.tween = gsap.to(track, {
-            x: -w,
-            duration: 26,
-            ease: "none",
-            repeat: -1,
-            overwrite: "auto",
-            force3D: true,
-          });
+          loopW = nw;
+          wrap();
+          paint();
         });
       });
     }
 
-    function schedule() {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(applyShift);
+    function tick(t) {
+      rafHandle = requestAnimationFrame(tick);
+      if (docPaused || phase === "drag" || loopW < 32) {
+        lastTick = t;
+        return;
+      }
+      if (!lastTick) lastTick = t;
+      var dt = Math.min(0.05, (t - lastTick) / 1000);
+      lastTick = t;
+
+      if (Math.abs(velX) > VEL_STOP) {
+        x += velX * dt;
+        velX *= Math.exp(-FRICTION_PER_S * dt);
+      } else {
+        velX = 0;
+        x -= AUTO_PX_PER_S * dt;
+      }
+      wrap();
+      paint();
     }
 
-    var host = viewport || marquee;
-    if (!host.dataset.marqueePauseWired) {
-      host.dataset.marqueePauseWired = "1";
-      host.addEventListener(
-        "pointerenter",
-        function () {
-          if (state.tween) state.tween.pause();
-        },
-        { passive: true }
-      );
-      host.addEventListener(
-        "pointerleave",
-        function () {
-          if (state.tween) state.tween.resume();
-        },
-        { passive: true }
-      );
+    function onPointerDown(e) {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      phase = "undecided";
+      downClientX = e.clientX;
+      downClientY = e.clientY;
+      lastClientX = e.clientX;
+      moveHist = [{ x: e.clientX, t: performance.now() }];
+      velX = 0;
     }
 
-    if (!marquee.dataset.marqueeVisWired) {
-      marquee.dataset.marqueeVisWired = "1";
-      document.addEventListener(
-        "visibilitychange",
-        function () {
-          if (document.hidden) {
-            if (state.tween) state.tween.pause();
-          } else {
-            if (state.tween) state.tween.resume();
-          }
-        },
-        { passive: true }
-      );
+    function onPointerMove(e) {
+      if (phase === "idle") return;
+
+      if (phase === "undecided") {
+        var rdx = e.clientX - downClientX;
+        var rdy = e.clientY - downClientY;
+        if (rdx * rdx + rdy * rdy < 81) return;
+        if (Math.abs(rdx) > Math.abs(rdy) * 1.05) {
+          phase = "drag";
+          lastClientX = e.clientX;
+          viewport.classList.add("gallery-cut-marquee__viewport--dragging");
+          try {
+            viewport.setPointerCapture(e.pointerId);
+          } catch (err) {}
+        } else {
+          phase = "idle";
+          return;
+        }
+      }
+
+      if (phase !== "drag") return;
+
+      if (e.cancelable) e.preventDefault();
+
+      var dx = e.clientX - lastClientX;
+      lastClientX = e.clientX;
+      x += dx;
+      var now = performance.now();
+      moveHist.push({ x: e.clientX, t: now });
+      if (moveHist.length > 6) moveHist.shift();
+      wrap();
+      paint();
     }
+
+    function onPointerUp(e) {
+      if (phase === "undecided") {
+        phase = "idle";
+        return;
+      }
+      if (phase !== "drag") return;
+      phase = "idle";
+      viewport.classList.remove("gallery-cut-marquee__viewport--dragging");
+      try {
+        if (viewport.hasPointerCapture(e.pointerId)) {
+          viewport.releasePointerCapture(e.pointerId);
+        }
+      } catch (err2) {}
+      velX = releaseVelocityPxPerS() * 1.08;
+      moveHist = [];
+      lastTick = 0;
+    }
+
+    viewport.addEventListener("pointerdown", onPointerDown, { passive: true });
+    viewport.addEventListener("pointermove", onPointerMove, { passive: false });
+    viewport.addEventListener("pointerup", onPointerUp, { passive: true });
+    viewport.addEventListener("pointercancel", onPointerUp, { passive: true });
+
+    document.addEventListener(
+      "visibilitychange",
+      function () {
+        docPaused = document.hidden;
+        lastTick = 0;
+      },
+      { passive: true }
+    );
 
     if (typeof ResizeObserver !== "undefined") {
       var ro = new ResizeObserver(function () {
-        schedule();
+        remeasure();
       });
       ro.observe(track);
     }
 
-    window.addEventListener("resize", schedule, { passive: true });
+    window.addEventListener("resize", remeasure, { passive: true });
     window.addEventListener("orientationchange", function () {
-      setTimeout(schedule, 320);
+      setTimeout(remeasure, 360);
     });
 
-    marquee.querySelectorAll("img").forEach(function (img) {
+    track.querySelectorAll("img").forEach(function (img) {
       if (!img.complete) {
-        img.addEventListener("load", schedule, { passive: true });
+        img.addEventListener("load", remeasure, { passive: true });
       }
     });
 
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(schedule);
+      document.fonts.ready.then(remeasure);
     }
 
-    schedule();
-    setTimeout(schedule, 60);
-    setTimeout(schedule, 400);
+    remeasure();
+    setTimeout(remeasure, 80);
+    setTimeout(remeasure, 420);
+    rafHandle = requestAnimationFrame(tick);
   }
 
   /* ——— Carrossel infinito: medida do loop + entrada GSAP ——— */
@@ -187,7 +275,7 @@
     var marquee = document.querySelector("[data-gallery-cut-marquee]");
     if (!marquee) return;
 
-    initGalleryCutMarqueeMeasure(marquee);
+    initGalleryInfiniteDrag(marquee);
 
     if (!prefersReduced && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
       gsap.from(marquee, {
