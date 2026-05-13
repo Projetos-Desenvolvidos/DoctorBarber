@@ -61,7 +61,7 @@
     lastTs = ts;
 
     if (!dragging && !hoverPause && inView) {
-      pos += speedPxPerSec * dt;
+      pos -= speedPxPerSec * dt;
     }
 
     wrapPos();
