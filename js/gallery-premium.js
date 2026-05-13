@@ -55,32 +55,64 @@
     });
   }
 
-  /* ——— Carrossel infinito: GSAP (Safari/iPhone falha com var() em @keyframes + mask). ——— */
+  /* ——— Carrossel infinito: GSAP (Safari/iPhone). ——— */
   function initGalleryCutMarqueeMeasure(marquee) {
     if (prefersReduced || !marquee || typeof gsap === "undefined") return;
 
     var track = marquee.querySelector(".gallery-cut-marquee__track");
-    var row = marquee.querySelector(".gallery-cut-marquee__row");
     var viewport = marquee.querySelector(".gallery-cut-marquee__viewport");
-    if (!track || !row) return;
+    if (!track) return;
 
     var state = { tween: null };
     var rafId;
 
+    function primeImages() {
+      var imgs = track.querySelectorAll("img");
+      var tasks = [];
+      for (var i = 0; i < imgs.length; i++) {
+        if (imgs[i].decode) {
+          tasks.push(
+            imgs[i].decode().catch(function () {
+              return undefined;
+            })
+          );
+        }
+      }
+      return tasks.length ? Promise.all(tasks) : Promise.resolve();
+    }
+
+    function readLoopWidthPx() {
+      var rows = track.querySelectorAll(".gallery-cut-marquee__row");
+      if (rows.length < 2) return 0;
+      void track.offsetHeight;
+      var a = rows[0].offsetWidth;
+      var b = rows[1].offsetWidth;
+      if (a < 32 || b < 32) return 0;
+      if (Math.abs(a - b) > 12) return 0;
+      return a;
+    }
+
     function applyShift() {
-      var w = row.getBoundingClientRect().width;
-      if (w < 32) return;
+      primeImages().then(function () {
+        requestAnimationFrame(function () {
+          var w = readLoopWidthPx();
+          if (w < 32) {
+            setTimeout(schedule, 48);
+            return;
+          }
 
-      gsap.killTweensOf(track);
-      gsap.set(track, { x: 0, force3D: true });
+          gsap.killTweensOf(track);
+          gsap.set(track, { x: 0, force3D: true });
 
-      state.tween = gsap.to(track, {
-        x: -w,
-        duration: 26,
-        ease: "none",
-        repeat: -1,
-        overwrite: "auto",
-        force3D: true,
+          state.tween = gsap.to(track, {
+            x: -w,
+            duration: 26,
+            ease: "none",
+            repeat: -1,
+            overwrite: "auto",
+            force3D: true,
+          });
+        });
       });
     }
 
@@ -127,7 +159,7 @@
       var ro = new ResizeObserver(function () {
         schedule();
       });
-      ro.observe(row);
+      ro.observe(track);
     }
 
     window.addEventListener("resize", schedule, { passive: true });
@@ -159,8 +191,7 @@
 
     if (!prefersReduced && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
       gsap.from(marquee, {
-        opacity: 0,
-        y: 36,
+        y: 40,
         duration: 1,
         delay: 0.08,
         ease: "power3.out",

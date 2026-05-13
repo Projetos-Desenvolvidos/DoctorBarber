@@ -297,6 +297,17 @@
   gap: clamp(0.75rem, 2vw, 1.25rem);
 }
 
+/* Cópia do strip: força camada própria no WebKit (evita “só preto” na 2ª fileira). */
+.gallery-cut-marquee__row--clone {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.gallery-cut-marquee__row--clone .netflix-card__media img {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
 .gallery-cut-marquee__cell {
   flex: 0 0 clamp(260px, 72vw, 380px);
 }
@@ -418,7 +429,7 @@
     overflow: visible;
   }
 
-  .gallery-cut-marquee__row[aria-hidden="true"] {
+  .gallery-cut-marquee__row--clone {
     display: none;
   }
 
