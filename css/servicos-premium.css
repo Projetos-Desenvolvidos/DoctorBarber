@@ -223,6 +223,15 @@
   flex: 1;
 }
 
+.servicos-luxury__duration {
+  margin: 0 0 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lux-gold);
+}
+
 .servicos-luxury__price {
   margin: 0 0 1rem;
   font-family: var(--font-display, "Archivo Black", sans-serif);
