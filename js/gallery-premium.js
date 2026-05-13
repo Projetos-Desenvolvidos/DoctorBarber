@@ -55,10 +55,107 @@
     });
   }
 
-  /* ——— Carrossel infinito: entrada GSAP (animação CSS no marquee) ——— */
+  /* ——— Carrossel infinito: GSAP (Safari/iPhone falha com var() em @keyframes + mask). ——— */
+  function initGalleryCutMarqueeMeasure(marquee) {
+    if (prefersReduced || !marquee || typeof gsap === "undefined") return;
+
+    var track = marquee.querySelector(".gallery-cut-marquee__track");
+    var row = marquee.querySelector(".gallery-cut-marquee__row");
+    var viewport = marquee.querySelector(".gallery-cut-marquee__viewport");
+    if (!track || !row) return;
+
+    var state = { tween: null };
+    var rafId;
+
+    function applyShift() {
+      var w = row.getBoundingClientRect().width;
+      if (w < 32) return;
+
+      gsap.killTweensOf(track);
+      gsap.set(track, { x: 0, force3D: true });
+
+      state.tween = gsap.to(track, {
+        x: -w,
+        duration: 26,
+        ease: "none",
+        repeat: -1,
+        overwrite: "auto",
+        force3D: true,
+      });
+    }
+
+    function schedule() {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(applyShift);
+    }
+
+    var host = viewport || marquee;
+    if (!host.dataset.marqueePauseWired) {
+      host.dataset.marqueePauseWired = "1";
+      host.addEventListener(
+        "pointerenter",
+        function () {
+          if (state.tween) state.tween.pause();
+        },
+        { passive: true }
+      );
+      host.addEventListener(
+        "pointerleave",
+        function () {
+          if (state.tween) state.tween.resume();
+        },
+        { passive: true }
+      );
+    }
+
+    if (!marquee.dataset.marqueeVisWired) {
+      marquee.dataset.marqueeVisWired = "1";
+      document.addEventListener(
+        "visibilitychange",
+        function () {
+          if (document.hidden) {
+            if (state.tween) state.tween.pause();
+          } else {
+            if (state.tween) state.tween.resume();
+          }
+        },
+        { passive: true }
+      );
+    }
+
+    if (typeof ResizeObserver !== "undefined") {
+      var ro = new ResizeObserver(function () {
+        schedule();
+      });
+      ro.observe(row);
+    }
+
+    window.addEventListener("resize", schedule, { passive: true });
+    window.addEventListener("orientationchange", function () {
+      setTimeout(schedule, 320);
+    });
+
+    marquee.querySelectorAll("img").forEach(function (img) {
+      if (!img.complete) {
+        img.addEventListener("load", schedule, { passive: true });
+      }
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(schedule);
+    }
+
+    schedule();
+    setTimeout(schedule, 60);
+    setTimeout(schedule, 400);
+  }
+
+  /* ——— Carrossel infinito: medida do loop + entrada GSAP ——— */
   function initGalleryCutMarquee() {
     var marquee = document.querySelector("[data-gallery-cut-marquee]");
     if (!marquee) return;
+
+    initGalleryCutMarqueeMeasure(marquee);
 
     if (!prefersReduced && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
       gsap.from(marquee, {

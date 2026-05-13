@@ -258,7 +258,21 @@
   overflow: hidden;
   width: 100%;
   padding: 0.75rem 0 1.5rem;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 1.5%, #000 98.5%, transparent 100%);
+  /* Sem máscara no mobile: WebKit + transform costumam “sumir” faixa no iPhone. */
+  mask-image: none;
+  -webkit-mask-image: none;
+  touch-action: pan-y;
+  overscroll-behavior-x: contain;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  isolation: isolate;
+}
+
+@media (min-width: 769px) {
+  .gallery-cut-marquee__viewport {
+    mask-image: linear-gradient(90deg, transparent 0%, #000 1.5%, #000 98.5%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 1.5%, #000 98.5%, transparent 100%);
+  }
 }
 
 .gallery-cut-marquee__track {
@@ -266,20 +280,9 @@
   flex-direction: row;
   align-items: stretch;
   width: max-content;
-  /* Sem gap entre as duas metades: o padding da row fecha o ciclo do translateX(-50%). */
   gap: 0;
-  animation: galleryCutMarqueeScroll 26s linear infinite;
-  will-change: transform;
-}
-
-.gallery-cut-marquee:hover .gallery-cut-marquee__track {
-  animation-play-state: paused;
-}
-
-@keyframes galleryCutMarqueeScroll {
-  to {
-    transform: translateX(-50%);
-  }
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .gallery-cut-marquee__row {
@@ -401,7 +404,7 @@
 @media (prefers-reduced-motion: reduce) {
   .gallery-cut-marquee__track {
     animation: none;
-    transform: none;
+    transform: none !important;
     flex-wrap: wrap;
     width: 100%;
     max-width: 100%;
