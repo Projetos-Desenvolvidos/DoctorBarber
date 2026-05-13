@@ -102,11 +102,25 @@
       var rows = track.querySelectorAll(".gallery-cut-marquee__row");
       if (rows.length < 2) return 0;
       void track.offsetHeight;
-      var a = rows[0].offsetWidth;
-      var b = rows[1].offsetWidth;
-      if (a < 32 || b < 32) return 0;
-      if (Math.abs(a - b) > 12) return 0;
-      return a;
+
+      var r0 = rows[0].getBoundingClientRect();
+      var r1 = rows[1].getBoundingClientRect();
+      var byRect = r1.left - r0.left;
+
+      var w0 = rows[0].offsetWidth;
+      var w1 = rows[1].offsetWidth;
+      var byOffset = rows[1].offsetLeft - rows[0].offsetLeft;
+
+      if (w0 < 32 || w1 < 32) return 0;
+      if (Math.abs(w0 - w1) > 12) return 0;
+
+      var cand = [byRect, byOffset, w0, w1].filter(function (v) {
+        return typeof v === "number" && v > 31 && !isNaN(v);
+      });
+      if (!cand.length) return 0;
+
+      /* Menor valor evita o “vácuo” após o último card; −1 px margem no WebKit. */
+      return Math.max(32, Math.min.apply(null, cand) - 1);
     }
 
     function wrap() {
@@ -133,14 +147,16 @@
     function remeasure() {
       primeImages().then(function () {
         requestAnimationFrame(function () {
-          var nw = readLoopW();
-          if (nw < 32) {
-            setTimeout(remeasure, 72);
-            return;
-          }
-          loopW = nw;
-          wrap();
-          paint();
+          requestAnimationFrame(function () {
+            var nw = readLoopW();
+            if (nw < 32) {
+              setTimeout(remeasure, 72);
+              return;
+            }
+            loopW = nw;
+            wrap();
+            paint();
+          });
         });
       });
     }
