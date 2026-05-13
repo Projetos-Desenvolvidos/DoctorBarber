@@ -41,20 +41,7 @@
     return arr;
   }
 
-  /* — Hero + header na entrada — */
-  gsap.set(
-    ".hero-tag, .hero-title-line, .hero-sub, .hero-actions .btn",
-    { autoAlpha: 0, y: 30 }
-  );
-  gsap.set(".hero-scroll", { autoAlpha: 0 });
-
-  var heroTl = gsap.timeline({ defaults: { ease: "power3.out" }, delay: 0.06 });
-  heroTl.to(".hero-tag", { autoAlpha: 1, y: 0, duration: 0.62 }, 0.06);
-  heroTl.to(".hero-title-line", { autoAlpha: 1, y: 0, duration: 0.68, stagger: 0.11 }, 0.1);
-  heroTl.to(".hero-sub", { autoAlpha: 1, y: 0, duration: 0.62 }, 0.18);
-  heroTl.to(".hero-actions .btn", { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.07 }, 0.22);
-  heroTl.to(".hero-scroll", { autoAlpha: 1, duration: 0.55 }, 0.32);
-
+  /* — Header na entrada (hero usa animação própria no slider) — */
   gsap.set(".site-header .logo-img, .site-header .logo-text-nav__name, .site-header .logo-text-nav__sub", {
     autoAlpha: 0,
     y: -8,

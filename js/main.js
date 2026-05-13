@@ -189,9 +189,9 @@
     }
   }
 
-  /* Hero parallax (subtle) */
-  var heroBg = document.querySelector(".hero-bg img");
-  if (heroBg && !prefersReduced) {
+  /* Hero slider — parallax suave na imagem do slide ativo */
+  var heroSlider = document.querySelector("[data-hero-slider]");
+  if (heroSlider && !prefersReduced) {
     var ticking = false;
     window.addEventListener(
       "scroll",
@@ -199,10 +199,13 @@
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(function () {
-          var y = window.scrollY;
-          var max = window.innerHeight;
-          var p = Math.min(y / max, 1);
-          heroBg.style.transform = "translate3d(0, " + p * 28 + "px, 0) scale(" + (1 + p * 0.02) + ")";
+          var media = heroSlider.querySelector(".hero-slider__slide.is-active .hero-slider__media");
+          if (media) {
+            var y = window.scrollY;
+            var max = window.innerHeight;
+            var p = Math.min(y / max, 1);
+            media.style.transform = "translate3d(0, " + Math.round(p * 22) + "px, 0)";
+          }
           ticking = false;
         });
       },
@@ -210,7 +213,7 @@
     );
   }
 
-  /* Botão fixo WhatsApp — a partir da seção Identidade & história (#sobre) */
+  /* Botão fixo WhatsApp — visível a partir da secção 01 (#sobre) */
   var waFloat = document.querySelector(".whatsapp-float");
   var section01 = document.getElementById("sobre");
   if (waFloat) {
