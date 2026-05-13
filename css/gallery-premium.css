@@ -242,22 +242,24 @@
   background: linear-gradient(90deg, var(--gp-gold), transparent);
 }
 
-/* ——— Carrossel infinito “Mais estilos” ——— */
-.gallery-cut-marquee {
+/* ——— Carrossel cortes (mesma lógica que ambient-marquee) ——— */
+.cuts-marquee {
   max-width: 100%;
   padding: 0 0.5rem 0.25rem;
+  outline: none;
 }
 
 @media (min-width: 900px) {
-  .gallery-cut-marquee {
+  .cuts-marquee {
     padding: 0 1.25rem 0.25rem;
   }
 }
 
-.gallery-cut-marquee__viewport {
+.cuts-marquee__viewport {
   overflow: hidden;
   width: 100%;
   padding: 0.75rem 0 1.5rem;
+  box-sizing: border-box;
   mask-image: none;
   -webkit-mask-image: none;
   touch-action: none;
@@ -271,165 +273,88 @@
   -webkit-user-select: none;
 }
 
-.gallery-cut-marquee__viewport--dragging {
+.cuts-marquee.is-dragging .cuts-marquee__viewport {
   cursor: grabbing;
 }
 
 @media (min-width: 769px) {
-  .gallery-cut-marquee__viewport {
+  .cuts-marquee__viewport {
     mask-image: linear-gradient(90deg, transparent 0%, #000 1.5%, #000 98.5%, transparent 100%);
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 1.5%, #000 98.5%, transparent 100%);
   }
 }
 
-.gallery-cut-marquee__track {
+.cuts-marquee__track {
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  gap: clamp(1rem, 2vw, 1.5rem);
   width: max-content;
-  gap: 0;
   flex-shrink: 0;
   will-change: transform;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
-.gallery-cut-marquee__row {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  padding-inline-end: clamp(0.75rem, 2vw, 1.25rem);
+.cuts-marquee__row {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   align-items: stretch;
   gap: clamp(0.75rem, 2vw, 1.25rem);
   flex-shrink: 0;
-  min-width: min-content;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* Cópia do strip: força camada própria no WebKit (evita “só preto” na 2ª fileira). */
-.gallery-cut-marquee__row--clone {
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
-
-.gallery-cut-marquee__row--clone .netflix-card__media img {
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
-
-.gallery-cut-marquee__cell {
-  flex: 0 0 clamp(260px, 72vw, 380px);
-  flex-shrink: 0;
+.cuts-marquee__slide {
+  flex: 0 0 auto;
+  width: clamp(260px, 72vw, 380px);
 }
 
 @media (min-width: 769px) {
-  .gallery-cut-marquee__cell {
-    flex: 0 0 clamp(280px, 28vw, 400px);
-    flex-shrink: 0;
+  .cuts-marquee__slide {
+    width: clamp(280px, 28vw, 400px);
   }
 }
 
-.netflix-card {
+.cuts-marquee__figure {
   position: relative;
+  margin: 0;
+  height: 100%;
+  aspect-ratio: 16 / 10;
   border-radius: 4px;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   background: #111;
-  transition: border-color 0.4s var(--gp-ease), transform 0.5s var(--gp-ease), box-shadow 0.45s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
-.netflix-card:hover,
-.netflix-card:focus-within {
-  border-color: rgba(201, 162, 39, 0.45);
-  transform: scale(1.02);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(201, 162, 39, 0.15);
+.cuts-marquee__figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(0, 0, 0, 0.08) 0%, transparent 40%, rgba(0, 0, 0, 0.28) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.netflix-card__media {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.netflix-card__media img {
+.cuts-marquee__figure img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s var(--gp-ease);
-}
-
-.netflix-card:hover .netflix-card__media img,
-.netflix-card:focus-within .netflix-card__media img {
-  transform: scale(1.06);
-}
-
-.netflix-card__overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.25rem 1.35rem;
-  background: linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.88));
-  opacity: 0;
-  transition: opacity 0.45s var(--gp-ease);
-}
-
-.netflix-card:hover .netflix-card__overlay,
-.netflix-card:focus-within .netflix-card__overlay {
-  opacity: 1;
-}
-
-.netflix-card__name {
-  font-family: var(--font-display, "Archivo Black", sans-serif);
-  font-size: 1.15rem;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  margin: 0 0 0.85rem;
-  transform: translateY(12px);
-  transition: transform 0.45s var(--gp-ease);
-}
-
-.netflix-card:hover .netflix-card__name,
-.netflix-card:focus-within .netflix-card__name {
-  transform: translateY(0);
-}
-
-.netflix-card__btn {
-  align-self: flex-start;
-  padding: 0.55rem 1.1rem;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #030303;
-  background: var(--gp-gold);
-  border-radius: 2px;
-  text-decoration: none;
-  transform: translateY(10px);
-  opacity: 0.95;
-  transition: transform 0.45s var(--gp-ease), background 0.25s, color 0.25s;
-}
-
-.netflix-card:hover .netflix-card__btn,
-.netflix-card:focus-within .netflix-card__btn {
-  transform: translateY(0);
-}
-
-.netflix-card__btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  background: #e0c04a;
-  color: #030303;
+  object-position: center;
+  transform: translateZ(0);
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gallery-cut-marquee__track {
-    animation: none;
+  .cuts-marquee__row[aria-hidden="true"] {
+    display: none;
+  }
+
+  .cuts-marquee__track {
     transform: none !important;
     flex-wrap: wrap;
     width: 100%;
@@ -439,30 +364,21 @@
     padding: 0 0.75rem 1.5rem;
   }
 
-  .gallery-cut-marquee__viewport {
+  .cuts-marquee__viewport {
     mask-image: none;
-    overflow: visible;
+    overflow-x: auto;
+    overflow-y: hidden;
     cursor: default;
-    touch-action: pan-y;
+    touch-action: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .gallery-cut-marquee__row--clone {
-    display: none;
-  }
-
-  .gallery-cut-marquee__row {
+  .cuts-marquee__row {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .netflix-card,
-  .netflix-card__media img,
   .spotlight__cta {
     transition: none;
-  }
-
-  .netflix-card:hover,
-  .netflix-card:focus-within {
-    transform: none;
   }
 }

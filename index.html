@@ -698,195 +698,73 @@
               Mais <span class="netflix-gallery__title-glow">estilos</span>
             </span>
           </h3>
-          <p class="netflix-gallery__hint">Arraste para explorar · rolagem automática suave</p>
+          <p class="netflix-gallery__hint">Arraste para explorar · pause passando o mouse</p>
         </div>
-        <div class="gallery-cut-marquee" data-gallery-cut-marquee tabindex="-1">
-          <div class="gallery-cut-marquee__viewport">
-            <div class="gallery-cut-marquee__track">
-              <ul class="gallery-cut-marquee__row" role="list">
-                <li class="gallery-cut-marquee__cell" role="listitem">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte1.png" alt="Corte fade monumental" width="800" height="500" loading="eager"
-                        decoding="async" fetchpriority="high" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Fade monumental</h4>
-                      <a href="#app-download" class="netflix-card__btn">Agendar</a>
-                    </div>
-                  </article>
+        <div class="cuts-marquee" data-cuts-marquee tabindex="-1">
+          <div class="cuts-marquee__viewport">
+            <div class="cuts-marquee__track">
+              <ul class="cuts-marquee__row" role="list">
+                <li class="cuts-marquee__slide" role="listitem">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte1.png" alt="Corte fade monumental" width="800" height="500" loading="eager"
+                      decoding="async" fetchpriority="high" draggable="false" />
+                  </figure>
                 </li>
-                <li class="gallery-cut-marquee__cell" role="listitem">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte2.png" alt="Corte degradê artístico" width="800" height="500" loading="eager"
-                        decoding="async" fetchpriority="high" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Degradê artístico</h4>
-                      <a href="#app-download" class="netflix-card__btn">Agendar</a>
-                    </div>
-                  </article>
+                <li class="cuts-marquee__slide" role="listitem">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte2.png" alt="Corte degradê artístico" width="800" height="500" loading="eager"
+                      decoding="async" fetchpriority="high" draggable="false" />
+                  </figure>
                 </li>
-                <li class="gallery-cut-marquee__cell" role="listitem">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte3.png" alt="Corte na régua absoluta" width="800" height="500" loading="eager"
-                        decoding="async" fetchpriority="high" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Na régua absoluta</h4>
-                      <a href="#app-download" class="netflix-card__btn">Agendar</a>
-                    </div>
-                  </article>
+                <li class="cuts-marquee__slide" role="listitem">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte3.png" alt="Corte na régua absoluta" width="800" height="500" loading="eager"
+                      decoding="async" fetchpriority="high" draggable="false" />
+                  </figure>
                 </li>
-                <li class="gallery-cut-marquee__cell" role="listitem">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte4.png" alt="Corte social afiado" width="800" height="500" loading="eager"
-                        decoding="async" fetchpriority="high" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Social afiado</h4>
-                      <a href="#app-download" class="netflix-card__btn">Agendar</a>
-                    </div>
-                  </article>
+                <li class="cuts-marquee__slide" role="listitem">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte4.png" alt="Corte social afiado" width="800" height="500" loading="eager"
+                      decoding="async" fetchpriority="high" draggable="false" />
+                  </figure>
                 </li>
-                <li class="gallery-cut-marquee__cell" role="listitem">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte5.png" alt="Corte com volume e textura" width="800" height="500" loading="eager"
-                        decoding="async" fetchpriority="high" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Volume &amp; textura</h4>
-                      <a href="#app-download" class="netflix-card__btn">Agendar</a>
-                    </div>
-                  </article>
+                <li class="cuts-marquee__slide" role="listitem">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte5.png" alt="Corte com volume e textura" width="800" height="500" loading="eager"
+                      decoding="async" fetchpriority="high" draggable="false" />
+                  </figure>
                 </li>
               </ul>
-              <ul class="gallery-cut-marquee__row gallery-cut-marquee__row--clone" role="presentation" inert>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte1.png" alt="" width="800" height="500" loading="eager" decoding="sync" fetchpriority="low"
-                        draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Fade monumental</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
+              <ul class="cuts-marquee__row" aria-hidden="true">
+                <li class="cuts-marquee__slide">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte1.png" alt="" width="800" height="500" loading="eager" decoding="async"
+                      fetchpriority="low" draggable="false" />
+                  </figure>
                 </li>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte2.png" alt="" width="800" height="500" loading="eager" decoding="sync" fetchpriority="low"
-                        draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Degradê artístico</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
+                <li class="cuts-marquee__slide">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte2.png" alt="" width="800" height="500" loading="eager" decoding="async"
+                      fetchpriority="low" draggable="false" />
+                  </figure>
                 </li>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte3.png" alt="" width="800" height="500" loading="eager" decoding="sync" fetchpriority="low"
-                        draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Na régua absoluta</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
+                <li class="cuts-marquee__slide">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte3.png" alt="" width="800" height="500" loading="eager" decoding="async"
+                      fetchpriority="low" draggable="false" />
+                  </figure>
                 </li>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte4.png" alt="" width="800" height="500" loading="eager" decoding="sync" fetchpriority="low"
-                        draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Social afiado</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
+                <li class="cuts-marquee__slide">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte4.png" alt="" width="800" height="500" loading="eager" decoding="async"
+                      fetchpriority="low" draggable="false" />
+                  </figure>
                 </li>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte5.png" alt="" width="800" height="500" loading="eager" decoding="sync"
-                        fetchpriority="low" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Volume &amp; textura</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
-                </li>
-              </ul>
-              <ul class="gallery-cut-marquee__row gallery-cut-marquee__row--clone" role="presentation" inert>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte1.png" alt="" width="800" height="500" loading="eager" decoding="sync"
-                        fetchpriority="low" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Fade monumental</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
-                </li>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte2.png" alt="" width="800" height="500" loading="eager" decoding="sync"
-                        fetchpriority="low" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Degradê artístico</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
-                </li>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte3.png" alt="" width="800" height="500" loading="eager" decoding="sync"
-                        fetchpriority="low" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Na régua absoluta</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
-                </li>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte4.png" alt="" width="800" height="500" loading="eager" decoding="sync"
-                        fetchpriority="low" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Social afiado</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
-                </li>
-                <li class="gallery-cut-marquee__cell">
-                  <article class="netflix-card">
-                    <div class="netflix-card__media">
-                      <img src="img/corte5.png" alt="" width="800" height="500" loading="eager" decoding="sync"
-                        fetchpriority="low" draggable="false" />
-                    </div>
-                    <div class="netflix-card__overlay">
-                      <h4 class="netflix-card__name">Volume &amp; textura</h4>
-                      <a href="#app-download" class="netflix-card__btn" tabindex="-1">Agendar</a>
-                    </div>
-                  </article>
+                <li class="cuts-marquee__slide">
+                  <figure class="cuts-marquee__figure">
+                    <img src="img/corte5.png" alt="" width="800" height="500" loading="eager" decoding="async"
+                      fetchpriority="low" draggable="false" />
+                  </figure>
                 </li>
               </ul>
             </div>
@@ -1378,6 +1256,7 @@
   <script src="js/app-showcase.js"></script>
   <script src="js/gallery-premium.js"></script>
   <script src="js/ambient-marquee.js"></script>
+  <script src="js/cuts-marquee.js"></script>
   <script src="js/ambient-lightbox.js"></script>
   <script src="js/brand-story.js"></script>
   <script src="js/servicos-premium.js"></script>

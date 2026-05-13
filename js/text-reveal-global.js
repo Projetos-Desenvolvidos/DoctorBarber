@@ -26,7 +26,7 @@
   function collectScrollTargets() {
     var arr = [];
     var selectors =
-      "main h1, main h2, main h3, main h4, main p, main figcaption, main .section-editorial__index, main .netflix-card__name, main .cta-block a.btn";
+      "main h1, main h2, main h3, main h4, main p, main figcaption, main .section-editorial__index, main .cta-block a.btn";
 
     document.querySelectorAll(selectors).forEach(function (el) {
       if (skipRegion(el)) return;
