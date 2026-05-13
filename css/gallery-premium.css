@@ -288,7 +288,10 @@
   align-items: stretch;
   width: max-content;
   gap: 0;
+  flex-shrink: 0;
   will-change: transform;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -303,6 +306,8 @@
   flex-wrap: nowrap;
   align-items: stretch;
   gap: clamp(0.75rem, 2vw, 1.25rem);
+  flex-shrink: 0;
+  min-width: min-content;
 }
 
 /* Cópia do strip: força camada própria no WebKit (evita “só preto” na 2ª fileira). */
@@ -318,11 +323,13 @@
 
 .gallery-cut-marquee__cell {
   flex: 0 0 clamp(260px, 72vw, 380px);
+  flex-shrink: 0;
 }
 
 @media (min-width: 769px) {
   .gallery-cut-marquee__cell {
     flex: 0 0 clamp(280px, 28vw, 400px);
+    flex-shrink: 0;
   }
 }
 

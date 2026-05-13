@@ -100,38 +100,48 @@
 
     function readLoopW() {
       var rows = track.querySelectorAll(".gallery-cut-marquee__row");
-      if (rows.length < 2) return 0;
+      if (rows.length < 3) return 0;
       void track.offsetHeight;
-
-      var r0 = rows[0].getBoundingClientRect();
-      var r1 = rows[1].getBoundingClientRect();
-      var byRect = r1.left - r0.left;
 
       var w0 = rows[0].offsetWidth;
       var w1 = rows[1].offsetWidth;
-      var byOffset = rows[1].offsetLeft - rows[0].offsetLeft;
+      var w2 = rows[2].offsetWidth;
+      var g1 = rows[1].offsetLeft - rows[0].offsetLeft;
+      var g2 = rows[2].offsetLeft - rows[1].offsetLeft;
 
-      if (w0 < 32 || w1 < 32) return 0;
-      if (Math.abs(w0 - w1) > 12) return 0;
+      if (w0 < 32 || w1 < 32 || w2 < 32) return 0;
+      if (Math.abs(w0 - w1) > 14 || Math.abs(w1 - w2) > 14) return 0;
+      if (Math.abs(g1 - g2) > 14) return 0;
 
-      var cand = [byRect, byOffset, w0, w1].filter(function (v) {
-        return typeof v === "number" && v > 31 && !isNaN(v);
-      });
-      if (!cand.length) return 0;
-
-      /* Menor valor evita o “vácuo” após o último card; −1 px margem no WebKit. */
-      return Math.max(32, Math.min.apply(null, cand) - 1);
+      var m = Math.min(w0, w1, w2, g1, g2);
+      if (m < 32) return 0;
+      return m;
     }
 
     function wrap() {
       if (loopW <= 0) return;
-      while (x <= -loopW) x += loopW;
-      while (x > 0) x -= loopW;
+      var s = -x;
+      var guard = 0;
+      while (s >= 2 * loopW && guard < 8) {
+        x += loopW;
+        s = -x;
+        guard++;
+      }
+      guard = 0;
+      while (s <= 0 && guard < 8) {
+        x -= loopW;
+        s = -x;
+        guard++;
+      }
     }
 
-    function paint() {
-      wrap();
+    function paintOnly() {
       track.style.transform = "translate3d(" + x + "px,0,0)";
+    }
+
+    function sync() {
+      wrap();
+      paintOnly();
     }
 
     function releaseVelocityPxPerS() {
@@ -154,8 +164,8 @@
               return;
             }
             loopW = nw;
-            wrap();
-            paint();
+            x = -loopW;
+            sync();
           });
         });
       });
@@ -168,7 +178,7 @@
         return;
       }
       if (!lastTick) lastTick = t;
-      var dt = Math.min(0.05, (t - lastTick) / 1000);
+      var dt = Math.min(0.032, Math.max(0.001, (t - lastTick) / 1000));
       lastTick = t;
 
       if (Math.abs(velX) > VEL_STOP) {
@@ -178,8 +188,7 @@
         velX = 0;
         x -= AUTO_PX_PER_S * dt;
       }
-      wrap();
-      paint();
+      sync();
     }
 
     function onPointerDown(e) {
@@ -222,8 +231,7 @@
       var now = performance.now();
       moveHist.push({ x: e.clientX, t: now });
       if (moveHist.length > 6) moveHist.shift();
-      wrap();
-      paint();
+      sync();
     }
 
     function onPointerUp(e) {
@@ -242,6 +250,7 @@
       velX = releaseVelocityPxPerS() * 1.08;
       moveHist = [];
       lastTick = 0;
+      sync();
     }
 
     viewport.addEventListener("pointerdown", onPointerDown, { passive: true });
