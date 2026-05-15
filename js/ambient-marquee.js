@@ -20,17 +20,20 @@
     return;
   }
 
-  var speedPxPerSec = 58;
-  /* Faixa [-segment, 0): fluxo visual esquerda→direita com cópia à direita da primeira fila. */
+  var speedPxPerSec = -58;
+  /* Faixa [-segment, 0): fluxo visual direita→esquerda com cópia à direita da primeira fila. */
   var pos = 0;
   var segment = 1;
   var gapBetweenRows = 0;
   var dragging = false;
+  var pendingDrag = false;
   var hoverPause = false;
   var inView = true;
   var dragDistance = 0;
+  var dragStartX = 0;
   var captureId = null;
   var lastPointerX = 0;
+  var dragThreshold = 10;
   var lastTs = 0;
   var rafId = 0;
 
@@ -72,17 +75,30 @@
 
   function onPointerDown(e) {
     if (e.pointerType === "mouse" && e.button !== 0) return;
-    dragging = true;
+    pendingDrag = true;
+    dragging = false;
     dragDistance = 0;
     root.removeAttribute("data-marquee-moved");
     captureId = e.pointerId;
+    dragStartX = e.clientX;
     lastPointerX = e.clientX;
-    root.classList.add("is-dragging");
-    viewport.setPointerCapture(captureId);
   }
 
   function onPointerMove(e) {
-    if (!dragging || e.pointerId !== captureId) return;
+    if ((!pendingDrag && !dragging) || e.pointerId !== captureId) return;
+
+    if (!dragging) {
+      var totalDx = e.clientX - dragStartX;
+      if (Math.abs(totalDx) < dragThreshold) return;
+      dragging = true;
+      root.classList.add("is-dragging");
+      try {
+        viewport.setPointerCapture(captureId);
+      } catch (err) {
+        /* ignore */
+      }
+    }
+
     var dx = e.clientX - lastPointerX;
     lastPointerX = e.clientX;
     dragDistance += Math.abs(dx);
@@ -95,18 +111,22 @@
   }
 
   function endDrag(e) {
-    if (!dragging || e.pointerId !== captureId) return;
+    if ((!pendingDrag && !dragging) || e.pointerId !== captureId) return;
+    var wasDragging = dragging;
+    pendingDrag = false;
     dragging = false;
     root.classList.remove("is-dragging");
-    try {
-      viewport.releasePointerCapture(captureId);
-    } catch (err) {
-      /* ignore */
+    if (wasDragging) {
+      try {
+        viewport.releasePointerCapture(captureId);
+      } catch (err) {
+        /* ignore */
+      }
+      window.setTimeout(function () {
+        root.removeAttribute("data-marquee-moved");
+      }, 320);
     }
     captureId = null;
-    window.setTimeout(function () {
-      root.removeAttribute("data-marquee-moved");
-    }, 320);
   }
 
   root.addEventListener(
