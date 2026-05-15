@@ -66,7 +66,7 @@
   object-fit: cover;
   object-position: center;
   transform: scale(1.04);
-  filter: saturate(0.88) contrast(1.06);
+  filter: saturate(0.92) contrast(1.03) brightness(1.1);
   transition: transform 8s ease-out;
 }
 
@@ -80,11 +80,11 @@
   z-index: 1;
   background: linear-gradient(
       120deg,
-      rgba(5, 5, 5, 0.88) 0%,
-      rgba(5, 5, 5, 0.42) 48%,
-      rgba(5, 5, 5, 0.72) 100%
+      rgba(5, 5, 5, 0.74) 0%,
+      rgba(5, 5, 5, 0.26) 48%,
+      rgba(5, 5, 5, 0.56) 100%
     ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 38%, rgba(0, 0, 0, 0.55) 100%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.36) 0%, transparent 38%, rgba(0, 0, 0, 0.4) 100%);
   pointer-events: none;
 }
 
